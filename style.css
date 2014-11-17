@@ -1,0 +1,33 @@
+body {
+	background-color: white;
+	color: white;
+}
+
+#tabs li {
+	display: inline;
+}
+
+#tabs li div {
+	display: none;
+}
+
+#tabs li:target div {
+	display: block;
+	position: absolute;
+	background-color: white;
+	color: black;
+	padding: 1em;
+
+}
+
+a {
+	color:white;
+	background-color: #999;
+	border-top-left-radius: 1.2em;
+	border-top-right-radius: 1.2em;
+	padding: 0.5em;
+}
+
+#wellcome {
+	margin-left: 3em;
+}
