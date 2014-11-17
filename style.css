@@ -1,12 +1,3 @@
-ol, ul {
-  list-style: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
 body {
   font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #404040;
@@ -14,39 +5,34 @@ body {
 }
 
 .register-title {
-  width: 25em;
+  width: 30%;
   line-height: 3em;
-  margin: 30px auto 5px;
-  font-size: 3em;
-  font-weight: 500;
-  color: white;
-  color: rgba(255, 255, 255, 0.95);
+  margin: 3em auto 0.5em auto;
+  color: rgba(255, 255, 255, 0.9);
   text-align: center;
   text-shadow: 0 1.5px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 2px rgba(0, 0, 0, 0.5);
-  background: #d7604b;
-  border-radius: 3px;
+  box-shadow: 0 3px rgba(0, 0, 0, 0.5);
+  /*background: #d7604b;*/
+  border-radius: 4px;
+  background:linear-gradient(#dc745e, #d7604b);
 }
 
 .login-title {
-  width: 270px;
-  line-height: 43px;
-  margin: 30px auto 5px;
-  font-size: 19px;
-  font-weight: 500;
-  color: white;
-  color: rgba(255, 255, 255, 0.95);
+  width: 30%;
+  line-height: 3em;
+  margin: 0.5em auto 0.5em auto;
+  color: rgba(255, 255, 255, 0.9);
   text-align: center;
   text-shadow: 0 1.5px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 2px rgba(0, 0, 0, 0.5);
-  background: #d7604b;
-  border-radius: 3px;
+  box-shadow: 0 3px rgba(0, 0, 0, 0.5);
+  background:linear-gradient(#dc745e, #d7604b);
+  border-radius: 4px;
 }
 
 .register {
 	display: none;
 	margin: auto;
-	width: 230px;
+	width: 23%;
 	padding: 20px;
 	background: #f4f4f4;
 	border-radius: 3px;
@@ -56,7 +42,7 @@ body {
 .login {
 	display: none;
 	margin: auto;
-	width: 230px;
+	width: 23%;
 	padding: 20px;
 	background: #f4f4f4;
 	border-radius: 3px;
