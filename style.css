@@ -1,20 +1,5 @@
-
-body {
-  line-height: 1;
-}
-
 ol, ul {
   list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
 }
 
 table {
@@ -28,36 +13,54 @@ body {
   background: #2d4259;
 }
 
-.forms-title {
+.register-title {
+  width: 25em;
+  line-height: 3em;
+  margin: 30px auto 5px;
+  font-size: 3em;
+  font-weight: 500;
+  color: white;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  text-shadow: 0 1.5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px rgba(0, 0, 0, 0.5);
+  background: #d7604b;
+  border-radius: 3px;
+}
+
+.login-title {
   width: 270px;
   line-height: 43px;
-  margin: 50px auto 20px;
+  margin: 30px auto 5px;
   font-size: 19px;
   font-weight: 500;
   color: white;
   color: rgba(255, 255, 255, 0.95);
   text-align: center;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1.5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px rgba(0, 0, 0, 0.5);
   background: #d7604b;
   border-radius: 3px;
 }
 
 .register {
-  margin: 0 auto;
-  width: 230px;
-  padding: 20px;
-  background: #f4f4f4;
-  border-radius: 3px;
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+	display: none;
+	margin: auto;
+	width: 230px;
+	padding: 20px;
+	background: #f4f4f4;
+	border-radius: 3px;
+	box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .login {
-  margin: 0 auto;
-  width: 230px;
-  padding: 20px;
-  background: #f4f4f4;
-  border-radius: 3px;
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+	display: none;
+	margin: auto;
+	width: 230px;
+	padding: 20px;
+	background: #f4f4f4;
+	border-radius: 3px;
+	box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 input {
