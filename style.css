@@ -1,33 +1,108 @@
+
 body {
-	background-color: white;
-	color: white;
+  line-height: 1;
 }
 
-#tabs li {
-	display: inline;
+ol, ul {
+  list-style: none;
 }
 
-#tabs li div {
-	display: none;
+blockquote, q {
+  quotes: none;
 }
 
-#tabs li:target div {
-	display: block;
-	position: absolute;
-	background-color: white;
-	color: black;
-	padding: 1em;
-
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
 }
 
-a {
-	color:white;
-	background-color: #999;
-	border-top-left-radius: 1.2em;
-	border-top-right-radius: 1.2em;
-	padding: 0.5em;
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-#wellcome {
-	margin-left: 3em;
+body {
+  font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #404040;
+  background: #2d4259;
+}
+
+.forms-title {
+  width: 270px;
+  line-height: 43px;
+  margin: 50px auto 20px;
+  font-size: 19px;
+  font-weight: 500;
+  color: white;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  background: #d7604b;
+  border-radius: 3px;
+}
+
+.register {
+  margin: 0 auto;
+  width: 230px;
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 3px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.login {
+  margin: 0 auto;
+  width: 230px;
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 3px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.forms-input {
+  display: block;
+  width: 100%;
+  height: 38px;
+  margin-top: 2px;
+  font-weight: 500;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #d8d8d8;
+}
+.forms-input:focus {
+  border-color: #1e9ce6;
+  outline: 0;
+}
+
+.forms-button {
+  display: block;
+  width: 100%;
+  height: 42px;
+  margin-top: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #494d59;
+  text-align: center;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+  background: #fcfcfc;
+  border: 1px solid;
+  border-color: #d8d8d8 #d1d1d1 #c3c3c3;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0.03), 0 1px rgba(0, 0, 0, 0.04);
+}
+.forms-button:active {
+  background: #eee;
+  border-color: #c3c3c3 #d1d1d1 #d8d8d8;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.03);
+}
+.forms-button:focus {
+  outline: 0;
 }
