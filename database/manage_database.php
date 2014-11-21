@@ -101,6 +101,13 @@
      }
 	
 
+     /**
+     * Save user with username $username, email $email and password $password
+     * @param $username String with user username
+     * @param $email String with user email
+     * @param $password String with hashed password
+     * @return boolean Return true if added successfully. False otherwise.
+     */
      function saveUser($username, $email, $password){
           include 'database.php';
 
