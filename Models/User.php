@@ -70,7 +70,7 @@ class User{
 
 			try {
 			     $hash_password = md5($this->password);
-			     saveUser($this->username, $this->email, $hash_password);
+			     save_user($this->username, $this->email, $hash_password);
 			     return true;
 			} catch(PDOException $e) {
 			    echo $e->getMessage();//Remove or change message in production code

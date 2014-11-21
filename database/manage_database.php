@@ -108,7 +108,7 @@
      * @param $password String with hashed password
      * @return boolean Return true if added successfully. False otherwise.
      */
-     function saveUser($username, $email, $password){
+     function save_user($username, $email, $password){
           include 'database.php';
 
           $db_connection = 'sqlite:'.$database_name;
