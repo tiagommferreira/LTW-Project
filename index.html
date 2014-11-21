@@ -7,13 +7,14 @@
   <script src="script.js"></script>
 <body>
   <h1 class="register-title">Sign-Up</h1>
-  <form class="register">
-    <input type="username" class="forms-input" placeholder="Username">
-    <input type="password" class="forms-input" placeholder="Password">
+  <form class="register" action="database/insert_user.php" method="post">
+    <input type="username" name="username" class="forms-input" placeholder="Username">
+    <input type="email" name="email" class="forms-input" placeholder="Email">
+    <input type="password" name="password" class="forms-input" placeholder="Password">
     <input type="submit" value="Create Account" class="forms-button">
   </form>
   <h1 class="login-title">Login</h1>
-  <form class="login">
+  <form class="login" method="post">
     <input type="username" class="forms-input" placeholder="Username">
     <input type="password" class="forms-input" placeholder="Password">
     <input type="submit" value="Login" class="forms-button">
