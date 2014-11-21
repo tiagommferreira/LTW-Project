@@ -14,9 +14,9 @@
     <input type="submit" value="Create Account" class="forms-button">
   </form>
   <h1 class="login-title">Login</h1>
-  <form class="login" method="post">
-    <input type="username" class="forms-input" placeholder="Username">
-    <input type="password" class="forms-input" placeholder="Password">
+  <form class="login" action="database/log_user.php" method="post">
+    <input type="username" name="username" class="forms-input" placeholder="Username">
+    <input type="password" name="password" class="forms-input" placeholder="Password">
     <input type="submit" value="Login" class="forms-button">
   </form>
 </body>

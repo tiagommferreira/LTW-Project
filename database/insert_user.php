@@ -1,24 +1,7 @@
 <?php
-	$db_connection = 'sqlite:database.db';
+	/** Register user to database. **/
+     include_once('../Models/User.php');	// include User model
+     $user = new User($_POST['username'], $_POST['email'], $_POST['password']);	// create user model with register form values
+     $user->save();	// save user if not exists
 
-try {
-
-     $username = $_POST['username'];
-     $email = $_POST['email'];
-     $password = $_POST['password'];
-
-     $hash_password = md5($password);
-
-     $db = new PDO($db_connection);
-     $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
-     $sql ="INSERT INTO users(username, email, password) VALUES ('".$username."', '".$email."', '".$hash_password."');";
-
-     $db->exec($sql);
-     print("User added successfully.\n");
-
-} catch(PDOException $e) {
-    echo $e->getMessage();//Remove or change message in production code
-}
-
-     header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
