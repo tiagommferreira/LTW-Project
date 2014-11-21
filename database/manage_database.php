@@ -1,6 +1,22 @@
 <?php
      include_once('database.php');
 
+     function connect(){
+          include 'database.php';
+
+          $db_connection = 'sqlite:'. $database_name;
+
+          try {
+               $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+               
+               return $db;
+          } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+          }
+     }
+
+     
      /**
      * Create all database tables.
      */
@@ -58,7 +74,6 @@
      */
      function get_user($username){
           include 'database.php';
-
           $db_connection = 'sqlite:'.$database_name;
 
           try {
@@ -85,5 +100,30 @@
           }
      }
 	
+
+     function saveUser($username, $email, $password){
+          include 'database.php';
+
+          $db_connection = 'sqlite:'.$database_name;
+
+          try {
+               $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+               $sql ="INSERT INTO users(username, email, password) VALUES (:username, :email, :password);";
+                   
+               $stmp = $db->prepare($sql);
+               $stmp->execute(array(
+                    ":username" => $username,
+                    ":email" => $email,
+                    ":password" => $password
+                    ));
+
+               return true;
+
+          } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+          }
+     }
 
 ?>

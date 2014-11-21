@@ -30,6 +30,10 @@ class User{
 	* @return Email string.
 	*/
 	public function getEmail(){ return $this->email; }
+	/**
+	* @return Password string.
+	*/
+	public function getPassword(){ return $this->password; }
 
 	/**
 	* Set username.
@@ -60,29 +64,14 @@ class User{
   	* @return boolean Returns true when user added successfully, false otherwise.
   	*/
 	public function save(){
-		include('../database/database.php');
-		$db_connection = 'sqlite:'.$database_name;
-		
+		include_once('../database/manage_database.php');
+
 		if($this->exists() == false){
 
-				echo ' nao existe. ';
 			try {
-
 			     $hash_password = md5($this->password);
-
-			     $db = new PDO($db_connection);
-			     $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
-			     $sql ="INSERT INTO users(username, email, password) VALUES (:username, :email, :password);";
-			    
-			     $stmp = $db->prepare($sql);
-			     $stmp->execute(array(
-			     	":username" => $this->username,
-			     	":email" => $this->email,
-			     	":password" => $hash_password
-			     	));
-
+			     saveUser($this->username, $this->email, $hash_password);
 			     return true;
-
 			} catch(PDOException $e) {
 			    echo $e->getMessage();//Remove or change message in production code
 			    return false;
@@ -99,35 +88,15 @@ class User{
   	* @return boolean Returns true if user exists, false otherwise.
   	*/
 	public function exists(){
-		include('../database/database.php');
+		include_once('../database/manage_database.php');
+		$user = get_user($this->username);
 
-		$db_connection = 'sqlite:'.$database_name;
-		try {
-		    $hash_password = md5($this->password);
+	    if($this->username == $user->getUsername()){
+	    	if($this->email == ""){	$this->email = $user->getEmail(); }	// if user model still doesn't have an email address, get from database
+	    	return true;
+	    }
+	    return false;
 
-		    $db = new PDO($db_connection);
-		    $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
-		    
-		    $sql ="SELECT * FROM users WHERE username = :username";
-			
-			$stmp = $db->prepare($sql);
-		    $stmp->execute(array(
-		     	":username" => $this->username,
-		    ));
-
-		    $user = $stmp->fetch();
-
-		    if($this->username === $user['username']){
-		    	if($this->email == ""){	$this->email = $user['email']; }	// if user model still doesn't have an email address, get from database
-		    	return true;
-		    }
-
-		    return false;
-
-		} catch(PDOException $e) {
-		    echo $e->getMessage();//Remove or change message in production code
-		    return false;
-		}
 	}
 
 	/** 
