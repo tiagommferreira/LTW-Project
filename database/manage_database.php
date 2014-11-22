@@ -39,6 +39,7 @@
                $db->exec($sql);
                print("Users table created.\n");
 
+               $db = null;
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
           }
@@ -60,6 +61,8 @@
 
                $db->exec($sql);
                print("Users table deleted.\n");
+               
+               $db = null;
 
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
@@ -91,7 +94,9 @@
                $user = $stmp->fetch();
                
                $userModel = new User($user['username'], $user['email'], $user['password']);
-           
+               $userModel->setID($user['ID']);
+               
+               $db = null;
                return $userModel;
 
           } catch(PDOException $e) {    
@@ -125,6 +130,7 @@
                     ":password" => $password
                     ));
 
+               $db = null;
                return true;
 
           } catch(PDOException $e) {

@@ -5,7 +5,14 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="scripts/script.js"></script>
+
+  <?php session_start(); ?>
 <body>
+<?php 
+  if(isset($_SESSION['user'])){ 
+    echo '<META HTTP-EQUIV="Refresh" Content="0; URL=user.php">';  
+  } 
+?>
   <h1 class="register-title">Sign-Up</h1>
   <form class="register" action="Auth/register.php" method="post">
     <input type="username" name="username" class="forms-input" placeholder="Username">

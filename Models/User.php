@@ -5,6 +5,7 @@ class User{
 	protected $username;
 	protected $password;
 	protected $email;
+	protected $id;
 
 
 	/** User database table name */
@@ -22,6 +23,13 @@ class User{
 		$this->email = $email;
 		$this->password = $password;
 	}
+
+
+	/**
+	* @return Username id.
+	*/
+	public function getID(){ return $this->id; }
+	
 	/**
 	* @return Username string.
 	*/
@@ -34,7 +42,14 @@ class User{
 	* @return Password string.
 	*/
 	public function getPassword(){ return $this->password; }
-
+	
+	/**
+	* Set user id.
+	* @param $id Integer with user id.
+	*/
+	public function setID($id){
+		$this->id = $id;
+	}
 	/**
 	* Set username.
 	* @param $username String with user username.
@@ -107,16 +122,15 @@ class User{
 	public function auth(){
 		include('../database/manage_database.php');
 		if($this->exists() == false){
-			echo "user doesn' exist<br>";
+			echo "User not found.<br>";
 			return false;
 		}
 		$hash_password = md5($this->password);
 		$user = get_user($this->username);
 		if($user->password == $hash_password){
-			echo 'authenticated!';
+			$this->id = $user->getID();	// set logged in user id
 			return true;
 		}
-		echo 'authentication failed!';
 		return false;
 	}
 }
