@@ -95,13 +95,14 @@ class User{
   	*/
 	public function exists(){
 		include_once('../database/manage_database.php');
+
 		$user = get_user($this->username);
 
-    if($this->username == $user->getUsername()){
-    	if($this->email == ""){	$this->email = $user->getEmail(); }	// if user model still doesn't have an email address, get from database
-    	return true;
-    }
-    return false;
+	    if($this->username == $user->getUsername()){
+	    	if($this->email == ""){	$this->email = $user->getEmail(); }	// if user model still doesn't have an email address, get from database
+	    	return true;
+	    }
+   		return false;
 
 	}
 
@@ -112,6 +113,7 @@ class User{
 	*/
 	public function auth(){
 		include('../database/manage_database.php');
+
 		if($this->exists() == false){
 			echo "User not found.<br>";
 			return false;

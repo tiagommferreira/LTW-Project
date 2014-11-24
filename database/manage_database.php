@@ -78,7 +78,7 @@
      function get_user($username){
           include 'database.php';
           $db_connection = 'sqlite:'.$database_name;
-
+          echo 'db_connection = '.$db_connection. '<br>';
           try {
 
                $db = new PDO($db_connection);
