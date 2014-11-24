@@ -74,7 +74,6 @@ class User{
 		include_once('../database/manage_database.php');
 
 		if($this->exists() == false){
-
 			try {
 			     $hash_password = md5($this->password);
 			     save_user($this->username, $this->email, $hash_password);
@@ -96,7 +95,6 @@ class User{
   	*/
 	public function exists(){
 		include_once('../database/manage_database.php');
-		echo $this->username;
 		$user = get_user($this->username);
 
     if($this->username == $user->getUsername()){
