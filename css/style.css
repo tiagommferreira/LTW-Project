@@ -95,3 +95,11 @@ input {
 .forms-button:focus {
   outline: 0;
 }
+
+.form-input-error {
+  border-bottom: 2px solid red;
+}
+
+.form-input-success{
+  border-bottom: 2px solid green;
+}
