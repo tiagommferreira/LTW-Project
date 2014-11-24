@@ -9,14 +9,14 @@
           try {
                $db = new PDO($db_connection);
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
-               
+
                return $db;
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
           }
      }
 
-     
+
      /**
      * Create all database tables.
      */
@@ -32,7 +32,7 @@
                // create users table
                $sql ="CREATE TABLE IF NOT EXISTS ".$user_table_name."(
                ID INTEGER PRIMARY KEY NOT NULL,
-               username VARCHAR( 50 ) NOT NULL, 
+               username VARCHAR( 50 ) NOT NULL,
                email VARCHAR( 250 ) NOT NULL,
                password VARCHAR( 150 ) NOT NULL);";
 
@@ -61,7 +61,7 @@
 
                $db->exec($sql);
                print("Users table deleted.\n");
-               
+
                $db = null;
 
           } catch(PDOException $e) {
@@ -80,10 +80,10 @@
           $db_connection = 'sqlite:'.$database_name;
 
           try {
-             
+
                $db = new PDO($db_connection);
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
-  
+
                $sql ="SELECT * FROM users WHERE username = :username";
 
                $stmp = $db->prepare($sql);
@@ -92,19 +92,21 @@
                ));
 
                $user = $stmp->fetch();
-               
-               $userModel = new User($user['username'], $user['email'], $user['password']);
+               $userModel = new User;
+               $userModel->setUsername($user['username']);
+               $userModel->setEmail($user['email']);
+               $userModel->setPassword($user['password']);
                $userModel->setID($user['ID']);
-               
+
                $db = null;
                return $userModel;
 
-          } catch(PDOException $e) {    
+          } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
           }
      }
-	
+
 
      /**
      * Save user with username $username, email $email and password $password
@@ -116,13 +118,13 @@
      function save_user($username, $email, $password){
           include 'database.php';
 
+
           $db_connection = 'sqlite:'.$database_name;
 
           try {
                $db = new PDO($db_connection);
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
                $sql ="INSERT INTO users(username, email, password) VALUES (:username, :email, :password);";
-                   
                $stmp = $db->prepare($sql);
                $stmp->execute(array(
                     ":username" => $username,

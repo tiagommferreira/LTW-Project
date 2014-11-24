@@ -3,11 +3,11 @@
   <meta charset="utf-8">
   <?php session_start(); ?>
 
-  <?php   
+  <?php
     include 'Models/User.php';
 
     if(!isset($_SESSION['user'])){
-          echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">'; 
+          echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
     }
 
     $user = unserialize($_SESSION['user']);
@@ -30,11 +30,13 @@
       </div>
    </ul>
   </div>
-  
+
   <div class="container">
   <?php
-  if($_GET['page'] == 'home' || !isset($_GET['page'])){
-   include 'Pages/home.php'; 
+  if(!isset($_GET['page'])){
+    include 'Pages/home.php';
+  } else if($_GET['page'] == 'home' || !isset($_GET['page'])){
+   include 'Pages/home.php';
   }else if($_GET['page'] == 'createpoll'){
     include 'Pages/createpoll.php';
   }else if($_GET['page'] == 'listpolls'){
@@ -47,7 +49,7 @@
 
   ?>
   </div>
-  
+
 
 </body>
 </html>

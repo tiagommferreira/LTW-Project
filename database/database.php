@@ -1,6 +1,6 @@
 <?php
 
-	$database_name = $_SERVER['DOCUMENT_ROOT'].'/firstProject/database/database.db';
+	$database_name = '/usr/users2/mieic2012/ei12050/public_html/projetoLTW/database/database.db';
 	$user_table_name = 'users';
 
 ?>

@@ -12,16 +12,8 @@ class User{
 	private $table_name = 'users';
 
 
+	public function __construct(){
 
-	/**
-	* @param $username Username string
-	* @param $email Email string
-	* @param $password Password string
-	*/
-	public function __construct($username, $email, $password){
-		$this->username = $username;
-		$this->email = $email;
-		$this->password = $password;
 	}
 
 
@@ -29,7 +21,7 @@ class User{
 	* @return Username id.
 	*/
 	public function getID(){ return $this->id; }
-	
+
 	/**
 	* @return Username string.
 	*/
@@ -42,7 +34,7 @@ class User{
 	* @return Password string.
 	*/
 	public function getPassword(){ return $this->password; }
-	
+
 	/**
 	* Set user id.
 	* @param $id Integer with user id.
@@ -104,17 +96,18 @@ class User{
   	*/
 	public function exists(){
 		include_once('../database/manage_database.php');
+		echo $this->username;
 		$user = get_user($this->username);
 
-	    if($this->username == $user->getUsername()){
-	    	if($this->email == ""){	$this->email = $user->getEmail(); }	// if user model still doesn't have an email address, get from database
-	    	return true;
-	    }
-	    return false;
+    if($this->username == $user->getUsername()){
+    	if($this->email == ""){	$this->email = $user->getEmail(); }	// if user model still doesn't have an email address, get from database
+    	return true;
+    }
+    return false;
 
 	}
 
-	/** 
+	/**
 	*	Authenticate user in website. Verifies if user exists and then checks if password is correct.
 	*	If password and username are correct, it creates a session (authenticating user).
 	*	@return boolean True when user is successfully authenticated. False otherwise.
