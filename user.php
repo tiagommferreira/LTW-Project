@@ -15,8 +15,10 @@
 
   <title>Poll Manager - <?php echo $user->getUsername(); ?></title>
   <link rel="stylesheet" href="css/userpage.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="scripts/script.js"></script>
+  <script src="scripts/add_option_poll.js"></script>
 
 <body>
   <div class="navbar">
