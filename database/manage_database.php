@@ -70,6 +70,41 @@
 
      }
 
+
+     function get_all_users(){
+          include 'database.php';
+          $db_connection = 'sqlite:'.$database_name;
+          try {
+
+               $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+               $sql ="SELECT * FROM users";
+
+               $stmp = $db->prepare($sql);
+               $stmp->execute();
+
+               $users = $stmp->fetchAll();
+
+               $users_final_array = array();
+               foreach($users as $user){
+                    $user_array = array('ID'=>$user['ID'], 'username'=>$user['username'], 'email'=>$user['email']);
+                    array_push($users_final_array, $user_array);
+               }
+               return $users_final_array;
+
+
+               
+
+               $db = null;
+               return $userModel;
+
+          } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+          }
+     }
+
      /**
      * Get user with username $username
      * @param $username String with user username
@@ -88,6 +123,42 @@
                $stmp = $db->prepare($sql);
                $stmp->execute(array(
                     ":username" => $username,
+               ));
+
+               $user = $stmp->fetch();
+               $userModel = new User;
+               $userModel->setUsername($user['username']);
+               $userModel->setEmail($user['email']);
+               $userModel->setPassword($user['password']);
+               $userModel->setID($user['ID']);
+
+               $db = null;
+               return $userModel;
+
+          } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+          }
+     }
+
+     /**
+     * Get user with email $email
+     * @param $email String with user email
+     * @return User Return user of type User
+     */
+     function get_user_by_mail($email){
+          include 'database.php';
+          $db_connection = 'sqlite:'.$database_name;
+          try {
+
+               $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+               $sql ="SELECT * FROM users WHERE email = :email";
+
+               $stmp = $db->prepare($sql);
+               $stmp->execute(array(
+                    ":email" => $email,
                ));
 
                $user = $stmp->fetch();

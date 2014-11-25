@@ -4,9 +4,9 @@
     
     $user = new User;	// create user model with register form values
 
-    $user->setUsername($_POST['username']);
-    $user->setEmail($_POST['email']);
-    $user->setPassword($_POST['password']);
+    $user->setUsername($_POST['register_username']);
+    $user->setEmail($_POST['register_email']);
+    $user->setPassword($_POST['register_password']);
 
 
      // save user if not exists

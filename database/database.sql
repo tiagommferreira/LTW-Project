@@ -14,12 +14,12 @@ CREATE TABLE polls_answers(
 CREATE TABLE user_polls(
   user_id INTEGER NOT NULL REFERENCES users(ID),
   polls_id INTEGER NOT NULL REFERENCES polls(ID),
-  answered BOOLEAN NOT NULL,
-  answer_id INTEGER REFERENCES polls_answer(ID)
+  answer_id INTEGER REFERENCES polls_answer(ID),
+  answered BOOLEAN NOT NULL
 );
 
 CREATE TABLE polls(
   ID INTEGER PRIMARY KEY NOT NULL,
   topic VARCHAR(50) NOT NULL,
-  question VARCHAR(300) NOT NULL,
+  question VARCHAR(300) NOT NULL
 );

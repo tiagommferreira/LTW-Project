@@ -16,15 +16,15 @@
 ?>
   <h1 class="register-title">Sign-Up</h1>
   <form class="register" action="Auth/register.php" method="post">
-    <input type="username" name="username" class="forms-input" placeholder="Username">
-    <input type="email" name="email" class="forms-input" placeholder="Email">
-    <input type="password" name="password" class="forms-input" placeholder="Password">
+    <input type="username" name="register_username" class="forms-input" placeholder="Username">
+    <input type="email" name="register_email" class="forms-input" placeholder="Email">
+    <input type="password" name="register_password" class="forms-input" placeholder="Password">
     <input type="submit" value="Create Account" class="forms-button">
   </form>
   <h1 class="login-title">Login</h1>
   <form class="login" action="Auth/login.php" method="post">
-    <input type="username" name="username" class="forms-input" placeholder="Username">
-    <input type="password" name="password" class="forms-input" placeholder="Password">
+    <input type="username" name="login_username" class="forms-input" placeholder="Username">
+    <input type="password" name="login_password" class="forms-input" placeholder="Password">
     <input type="submit" value="Login" class="forms-button">
   </form>
 </body>
