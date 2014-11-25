@@ -9,16 +9,19 @@
     if(!isset($_SESSION['user'])){
           echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
     }
-
+    
     $user = unserialize($_SESSION['user']);
   ?>
 
   <title>Poll Manager - <?php echo $user->getUsername(); ?></title>
   <link rel="stylesheet" href="css/userpage.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="http://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css" rel="stylesheet">
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
   <script src="scripts/script.js"></script>
   <script src="scripts/add_option_poll.js"></script>
+
 
 <body>
   <div class="navbar">

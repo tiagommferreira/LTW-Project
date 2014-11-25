@@ -1,11 +1,14 @@
-
+<?php 
+	session_start(); 
+	$user = unserialize($_SESSION['user']);
+?>
 <div class="title">
 <h1>Create Poll</h1>
 
 </div>
 
 <div class="content">
-	<form class="poll-form" action="#" method="post">
+	<form class="poll-form" action="Polls/add.php" method="post">
 		<div class="poll-question">
 			Question: 
 			<input type="text" name="poll_question" class="poll-form-input" placeholder="Write your question...">
