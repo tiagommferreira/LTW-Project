@@ -6,6 +6,7 @@
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="scripts/script.js"></script>
 <script src="scripts/register_validation.js"></script>
+<script src="scripts/login_validation.js"></script>
 
   <?php session_start(); ?>
 <body>
@@ -19,6 +20,7 @@
     <input type="username" name="register_username" class="forms-input" placeholder="Username">
     <input type="email" name="register_email" class="forms-input" placeholder="Email">
     <input type="password" name="register_password" class="forms-input" placeholder="Password">
+    <input type="password" name="register_password_confirm" class="forms-input" placeholder="Confirm Password">
     <input type="submit" value="Create Account" class="forms-button">
   </form>
   <h1 class="login-title">Login</h1>

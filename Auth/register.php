@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	/** Register user to database. **/
     include_once('../Models/User.php');	// include User model
     
@@ -11,9 +12,11 @@
 
      // save user if not exists
 	if($user->save()){
-		echo 'User registration completed!';
+		$_SESSION['user'] = serialize($user);
+		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../user.php">';
 	} else{
-		echo 'User registration failed!';
+		alert("Registration failed");
+		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../index.php">';
 	}	
 
 ?>
