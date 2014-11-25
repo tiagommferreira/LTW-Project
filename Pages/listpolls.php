@@ -33,16 +33,18 @@
 		?>
 
         <tr>
-            <td><?php echo $poll->getQuestion(); ?> </td>
-            <td><?php echo count($poll->getAnswers()); ?> </td>
-            <td><?php echo $poll->getAnswersReceived(); ?> </td>
+            <td><center><?php echo $poll->getQuestion(); ?> </center></td>
+            <td><center><?php echo count($poll->getAnswers()); ?> </center></td>
+            <td><center><?php echo $poll->getAnswersReceived(); ?> </center></td>
 
-            <td><?php 
+            <td><center>
+            <?php 
             chdir('Pages/');	// change dir in order to includes work fine
             $user_poll = get_user_by_id($poll->getUserID());
             echo $user_poll->getUsername();
             chdir('../');	// change dir in order to includes work fine
-            ?> </td>
+            ?> 
+            </center></td>
         </tr>
 
         <?php

@@ -132,3 +132,10 @@ body, html {
   margin: 1em;
 }
 
+.polls_list thead{
+  background-color: #EBEBEB;
+}
+
+.polls_list tr:hover{
+  background-color: #EBEBEB;
+}
