@@ -305,6 +305,7 @@
           }
      }
 
+
      function get_all_polls(){
           include 'database.php';
           include_once '../Models/Poll.php';
@@ -320,6 +321,67 @@
                $sql ="SELECT * FROM polls";
                $stmp = $db->prepare($sql);
                $stmp->execute();
+               $polls_array = $stmp->fetchAll();
+
+               $polls_final_array = array();
+               
+               // get all answers of poll
+               foreach($polls_array as $poll){
+
+                    $sql ="SELECT * FROM polls_answers WHERE poll_id = :poll_id"; 
+                    $stmp = $db->prepare($sql);
+                    $stmp->execute(array(
+                         ":poll_id" => $poll['ID']
+                         ));
+                    $poll_answers = $stmp->fetchAll();
+
+                    $poll_final_answers = array();
+                    $answersReceived = 0;
+                    foreach ($poll_answers as $poll_answer) {
+                         array_push($poll_final_answers, $poll_answer['answer']);
+                         $answersReceived = $answersReceived + intval($poll_answer['votes']);
+                    }
+
+
+                    $final_poll = new Poll;
+                    $final_poll->setID($poll['ID']);
+                    $final_poll->setQuestion($poll['question']);
+                    $final_poll->setAnswers($poll_answers);
+                    $final_poll->setImage("");
+                    $final_poll->setUserID(intval($poll['user_id']));
+                    $final_poll->setAnswersReceived($answersReceived);
+
+                    array_push($polls_final_array, $final_poll);
+               }
+
+
+               return $polls_final_array;
+
+          } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+          }
+     }
+
+
+
+     function get_all_polls_by_user($user_id){
+          include 'database.php';
+          include_once '../Models/Poll.php';
+          include_once '../Models/User.php';
+
+          $db_connection = 'sqlite:'.$database_name;
+
+          try {
+               $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+               // get all polls from polls table
+               $sql ="SELECT * FROM polls WHERE user_id = :user_id";
+               $stmp = $db->prepare($sql);
+               $stmp->execute(array(
+                    ":user_id" => $user_id
+               ));
                $polls_array = $stmp->fetchAll();
 
                $polls_final_array = array();

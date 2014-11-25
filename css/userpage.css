@@ -139,3 +139,49 @@ body, html {
 .polls_list tr:hover{
   background-color: #EBEBEB;
 }
+
+
+.info-box{
+  border: 1px solid gray;
+  width: 28%;
+  min-height: 10em;
+  border-radius: 8px;
+  float: left;
+  margin: 2%;
+}
+
+.info-box-blue{
+  background-color: #079; 
+}
+
+.info-box .header{
+  padding: 1em;
+  border-bottom: 1px solid gray;
+  color: white;
+  text-align: center;
+}
+
+.info-box .header h1{
+  font-size: 18px;
+}
+
+
+.info-box .body{
+  padding: 1em;
+  color: white;
+}
+
+
+.info-box .body .number{
+  padding: 0.5em;
+  color: white;
+  font-size: 32px;
+  border: 1px solid gray;
+  border-radius: 35px;
+  display: inline-block;
+  background-color:  #EBEBEB;
+  color: #069;
+}
+
+
+
