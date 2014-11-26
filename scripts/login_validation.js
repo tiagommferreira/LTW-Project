@@ -11,6 +11,11 @@ $(document).ready(function() {
 	$("input[type='submit']").attr('disabled', 'disabled');
 });
 
+$(document).keypress(function(e) {
+    if(e.which == 13) {
+        verifyValidLogin();
+    }
+});
 
 $(function(){
 	// base url pc

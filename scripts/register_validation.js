@@ -29,6 +29,13 @@ $(document).ready(function() {
 });
 
 
+$(document).keypress(function(e) {
+    if(e.which == 13) {
+        verifyRegistrationValid();
+    }
+});
+
+
 $(function(){
 	// base url pc
 	var BASE_URL = "http://ltw.feup:8888/projetoLTW";
