@@ -17,10 +17,26 @@
       		);
 
       
-      		$poll_final_array['by_id'] = $poll_array;
+      		$final_array['by_id'] = $poll_array;
     	}
   }
-  echo json_encode($poll_final_array);
+  else if(isset($_GET['answer_id'])){
+    $answer = get_answer_by_id($_GET['answer_id']);
+
+    if($answer!=false){
+      $answer_array = array(
+          'id'=>$answer['ID'],
+          'poll_id'=>$answer['poll_id'],
+          'answer'=>$answer['answer'],
+          'votes'=>$answer['votes']
+          );
+
+      
+          $final_array['answer_by_id'] = $answer_array;
+    }
+
+  }
+  echo json_encode($final_array);
 
 
 ?>

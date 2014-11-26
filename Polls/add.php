@@ -4,8 +4,7 @@
 	include '../Models/User.php';
 	include '../Models/Poll.php';	// include User model
     $user = unserialize($_SESSION['user']);
-
-	echo 'user id = '; echo $user->getID(). '<br>';
+    
 	$question = $_POST['poll_question'];
 
 	$answers = array();

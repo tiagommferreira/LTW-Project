@@ -12,13 +12,14 @@
 <div class="content">
 	
 
-	<table id="polls_list" class="polls_list">
+	<table id="polls_list" class="table table-striped table-hover">
 	    <thead>
 	        <tr>
 	            <th>Question</th>
 	            <th>Number of Options</th>
 	            <th>Number of Answers</th>
 	            <th>Created by</th>
+	            <th>Vote</th>
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -45,8 +46,7 @@
 	            chdir('../');	// change dir in order to includes work fine
 	            ?> 
 	            </center></td>
-
-	            <td><button id="<?php echo $poll->getID(); ?>" onclick="openVoteModal(this);">Vote</button></td>
+	            <td><button id="<?php echo $poll->getID(); ?>" onclick="openVoteModal(this);" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-reply fa-lg"></i></button></td>
 	        </tr>
 
 	        <?php
@@ -65,7 +65,7 @@
 	        		<h3 id="poll_modal_title" class="modal-title">Modal title</h3>
 	      		</div>
 	      		<div class="modal-body">
-	      			<form class="poll-form" action="Polls/add.php" method="post">
+	      			<form class="poll-form" action="Polls/vote.php" method="post">
 						
 						<div class="poll-image">
 							Poll Image:<br>
@@ -79,7 +79,6 @@
 	      				<h4>Options: </h4>
 						<div class="possible_answers" id="poll_modal_answers">
 						</div>
-
 						<input type="submit" value="Submit Vote" class="poll-vote-button">
 					</form>
 
@@ -93,9 +92,7 @@
 
 
 <script type="text/javascript">
-	$(document).ready( function () {
-    $('#polls_list').DataTable();
-} );
+	
 </script>
 
 </div>

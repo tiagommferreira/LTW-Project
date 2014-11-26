@@ -12,8 +12,12 @@
 
      // save user if not exists
 	if($user->save()){
-		$_SESSION['user'] = serialize($user);
-		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../user.php">';
+		if($user->auth()){
+			$_SESSION['user'] = serialize($user);
+			echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../user.php">';
+		}else{
+			echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../index.php">';
+		}
 	} else{
 		alert("Registration failed");
 		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../index.php">';

@@ -424,7 +424,33 @@
           }
      }
 
+     function get_answer_by_id($id){
+          include 'database.php';
+          include_once '../Models/Poll.php';
+          include_once '../Models/User.php';
 
+          $db_connection = 'sqlite:'.$database_name;
+
+          try {
+               $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+               // get answer with id
+
+               $sql ="SELECT * FROM polls_answers WHERE ID = :id"; 
+               $stmp = $db->prepare($sql);
+               $stmp->execute(array(
+                         ":id" => $id
+               ));
+               $answer = $stmp->fetch();
+
+               return $answer;
+
+          } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+          }
+     }
 
      function get_poll_by_id($id){
           include 'database.php';
@@ -458,7 +484,7 @@
                $poll_final_answers = array();
                $answersReceived = 0;
                foreach ($poll_answers as $poll_answer) {
-                    array_push($poll_final_answers, $poll_answer['answer']);
+                    array_push($poll_final_answers, $poll_answer['ID']);
                     $answersReceived = $answersReceived + intval($poll_answer['votes']);
                }
 
@@ -482,6 +508,65 @@
               return false;
           }
      }
+
+
+
+
+     function vote_poll($poll_id, $user_id, $answer_id){
+          include 'database.php';
+          include_once '../Models/Poll.php';
+          include_once '../Models/User.php';
+
+          $db_connection = 'sqlite:'.$database_name;
+
+          try {
+               $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+
+
+               $sql ="SELECT * FROM user_polls WHERE user_id = :user_id AND polls_id = :polls_id" ; 
+               $stmp = $db->prepare($sql);
+               $stmp->execute(array(
+                         ":user_id" => $user_id,
+                         ":polls_id" => $poll_id
+               ));
+               $user_votes = $stmp->fetchAll();
+
+               if(count($user_votes) > 0){
+                    return false;
+               }
+
+               // insert into database the answer
+               $sql ="INSERT INTO user_polls(user_id, polls_id, answer_id) VALUES (:user_id, :polls_id, :answer_id)";
+               $stmp = $db->prepare($sql);
+               $stmp->execute(array(
+                    ":user_id"=>$user_id,
+                    ":polls_id"=>$poll_id,
+                    ":answer_id"=>$answer_id
+               ));
+
+               $poll = get_answer_by_id($answer_id);
+               echo "new vote =";
+               $new_votes = intval($poll['votes'])+1;
+               echo $new_votes;
+               $sql = "UPDATE polls_answers SET votes=:votes WHERE ID=:id";
+               $stmp = $db->prepare($sql);
+               $stmp->execute(array(
+                    ":votes"=>$new_votes,
+                    ":id"=>$poll_id
+               ));
+
+               return true;
+
+          } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+          }
+     }
+
+
+
 
 
 ?>

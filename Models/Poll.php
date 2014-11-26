@@ -103,6 +103,12 @@ class Poll{
 	}
 
 
+
+	public function vote($user_id, $answer_id){
+		include_once('../database/manage_database.php');
+		session_start();
+		return vote_poll($this->id, $user_id, $answer_id);
+	}
 }
 
 ?>
