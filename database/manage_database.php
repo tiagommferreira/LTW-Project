@@ -566,6 +566,67 @@
      }
 
 
+//started to get answered_polls
+ function get_all_answered_polls_by_user($user_id){
+          include 'database.php';
+          include_once '../Models/Poll.php';
+          include_once '../Models/User.php';
+
+          $db_connection = 'sqlite:'.$database_name;
+
+          try {
+               $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+               // get all answered_polls
+               $sql ="SELECT COUNT(*) FROM user_polls WHERE user_polls.user_id = :user_id";
+               
+               $stmp = $db->prepare($sql);
+               $stmp->execute();
+               $answered_polls = $stmp->fetch();
+
+
+               return $answered_polls;
+
+          } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+          }
+     }
+
+ function get_all_unanswered_polls_by_user($user_id){
+          include 'database.php';
+          include_once '../Models/Poll.php';
+          include_once '../Models/User.php';
+
+          $db_connection = 'sqlite:'.$database_name;
+
+          try {
+               $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+               // get all answered_polls
+               $sql ="SELECT COUNT(*) FROM user_polls WHERE user_polls.user_id = :user_id";
+               $stmp = $db->prepare($sql);
+               $stmp->execute();
+               $answered_polls = $stmp->fetch();
+
+
+                // get all polls from polls table
+               $sql ="SELECT COUNT(*) FROM polls";
+               $stmp = $db->prepare($sql);
+               $stmp->execute();
+               $total_polls = $stmp->fetch();
+
+               $unanswered_polls = $total_polls - $answered_polls;
+
+               return $unanswered_polls;
+
+          } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+          }
+     }
 
 
 
