@@ -65,7 +65,6 @@
 	      		</div>
 	      		<div class="modal-body">
 	      			<form class="poll-form" action="Polls/vote.php" method="post">
-						
 						<div class="poll-image">
 							Poll Image:<br>
 							<div class="image-upload">

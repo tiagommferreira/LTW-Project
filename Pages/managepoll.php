@@ -10,13 +10,13 @@
 
 <div class="content">
 
-	<table id="polls_list" class="table table-striped table-hover">
+	<table id="manage_polls_list" class="table table-striped table-hover">
 	    <thead>
 	        <tr>
 	            <th><center>Question</center></th>
 	            <th><center>Number of Options</center></th>
 	            <th><center>Number of Answers</center></th>
-	            <th><center>Edit</center></th>
+	            <th><center>Manage</center></th>
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -45,7 +45,10 @@
 	            </center></td>
 	            -->
 	            <!-- TODO: ONCLICK -->
-	            <td><center><button id="<?php echo $poll->getID(); ?>" onclick="" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-reply fa-lg"></i></button></center></td>
+	            <td><center>
+	            	<button id="<?php echo $poll->getID(); ?>" onclick="" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-cogs fa-lg"></i></button>
+	            	<button id="<?php echo $poll->getID(); ?>" onclick="" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-times fa-lg"></i></button>	
+	            	</center></td>
 	        </tr>
 
 	        <?php
