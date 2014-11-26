@@ -10,16 +10,15 @@
 </div>
 
 <div class="content">
-	
 
 	<table id="polls_list" class="table table-striped table-hover">
 	    <thead>
 	        <tr>
-	            <th>Question</th>
-	            <th>Number of Options</th>
-	            <th>Number of Answers</th>
-	            <th>Created by</th>
-	            <th>Vote</th>
+	            <th><center>Question</center></th>
+	            <th><center>Number of Options</center></th>
+	            <th><center>Number of Answers</center></th>
+	            <th><center>Created by</center></th>
+	            <th><center>Vote</center></th>
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -46,7 +45,7 @@
 	            chdir('../');	// change dir in order to includes work fine
 	            ?> 
 	            </center></td>
-	            <td><button id="<?php echo $poll->getID(); ?>" onclick="openVoteModal(this);" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-reply fa-lg"></i></button></td>
+	            <td><center><button id="<?php echo $poll->getID(); ?>" onclick="openVoteModal(this);" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-reply fa-lg"></i></button></center></td>
 	        </tr>
 
 	        <?php
