@@ -7,6 +7,7 @@
     $user = unserialize($_SESSION['user']);
 
 	$option_id = $_POST['option'];
+
 	if($option_id!=""){
 
 		$answer = get_answer_by_id($option_id);

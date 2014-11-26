@@ -547,14 +547,14 @@
                ));
 
                $poll = get_answer_by_id($answer_id);
-               echo "new vote =";
+
                $new_votes = intval($poll['votes'])+1;
-               echo $new_votes;
+
                $sql = "UPDATE polls_answers SET votes=:votes WHERE ID=:id";
                $stmp = $db->prepare($sql);
                $stmp->execute(array(
                     ":votes"=>$new_votes,
-                    ":id"=>$poll_id
+                    ":id"=>$answer_id
                ));
 
                return true;

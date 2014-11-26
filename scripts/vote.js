@@ -14,8 +14,8 @@ function openVoteModal(button){
 		$( "#poll_modal_answers" ).empty();	// empty options div
 		for (i = 0; i < answers.length; i++) { 
 			// get option string
-			$.getJSON(BASE_URL+'/api/polls.php?answer_id='+answers[i], function( data_answer ) {	
-				$( "#poll_modal_answers" ).append('<input type="radio" name="option" value="' + answers[i] +'"> '+data_answer.answer_by_id.answer+'<br>');
+			$.getJSON(BASE_URL+'/api/polls.php?answer_id='+answers[i], function( data_answer ) {
+				$( "#poll_modal_answers" ).append('<input type="radio" name="option" value="' + data_answer.answer_by_id.id +'"> '+data_answer.answer_by_id.answer+'<br>');
 			});
 
    		}
