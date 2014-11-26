@@ -9,6 +9,11 @@ function listeners() {
 		$(this).prev().remove();
 		$(this).next().remove();
 		$(this).remove();
+		var choices = $('.possible_answers').children("input");
+		for(var i = 0; i<choices.length; i = i+1) {
+			choices.eq(i).attr("name", "option_"+(i+1));
+		}
+		console.log(choices);
 	});
 }
 

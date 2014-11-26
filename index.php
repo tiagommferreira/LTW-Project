@@ -7,7 +7,8 @@
 <script src="scripts/script.js"></script>
 <script src="scripts/register_validation.js"></script>
 <script src="scripts/login_validation.js"></script>
-
+  
+  <?php echo $_SERVER['DOCUMENT_ROOT']; ?>
   <?php session_start(); ?>
 <body>
 <?php

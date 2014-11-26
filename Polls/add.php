@@ -6,7 +6,6 @@
     $user = unserialize($_SESSION['user']);
     
 	$question = $_POST['poll_question'];
-
 	$answers = array();
 	$counter = 1;
 	while(isset($_POST['option_'.$counter])){
