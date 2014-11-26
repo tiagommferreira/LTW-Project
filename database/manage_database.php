@@ -424,4 +424,64 @@
           }
      }
 
+
+
+     function get_poll_by_id($id){
+          include 'database.php';
+          include_once '../Models/Poll.php';
+          include_once '../Models/User.php';
+
+          $db_connection = 'sqlite:'.$database_name;
+
+          try {
+               $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+               // get all polls from polls table
+               $sql ="SELECT * FROM polls WHERE ID = :id";
+               $stmp = $db->prepare($sql);
+               $stmp->execute(array(
+                    ":id"=>$id
+               ));
+               $poll = $stmp->fetch();
+
+               
+               // gets possible answers
+
+               $sql ="SELECT * FROM polls_answers WHERE poll_id = :poll_id"; 
+               $stmp = $db->prepare($sql);
+               $stmp->execute(array(
+                         ":poll_id" => $poll['ID']
+               ));
+               $poll_answers = $stmp->fetchAll();
+
+               $poll_final_answers = array();
+               $answersReceived = 0;
+               foreach ($poll_answers as $poll_answer) {
+                    array_push($poll_final_answers, $poll_answer['answer']);
+                    $answersReceived = $answersReceived + intval($poll_answer['votes']);
+               }
+
+
+               $final_poll = new Poll;
+               $final_poll->setID($poll['ID']);
+               $final_poll->setQuestion($poll['question']);
+               $final_poll->setAnswers($poll_final_answers);
+               $final_poll->setImage("");
+               $final_poll->setUserID(intval($poll['user_id']));
+               $final_poll->setAnswersReceived($answersReceived);
+
+               $poll_final_array = array();
+               $poll_final_array['poll']=$final_poll;
+
+
+               return $final_poll;
+
+          } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+          }
+     }
+
+
 ?>
