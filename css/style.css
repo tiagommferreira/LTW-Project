@@ -12,7 +12,6 @@ body {
   text-align: center;
   text-shadow: 0 1.5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 3px rgba(0, 0, 0, 0.5);
-  /*background: #d7604b;*/
   border-radius: 4px;
   background:linear-gradient(#dc745e, #d7604b);
 }
