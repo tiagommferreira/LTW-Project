@@ -16,7 +16,6 @@
           }
      }
 
-
      /**
      * Create all database tables.
      */
@@ -579,14 +578,15 @@
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
 
                // get all answered_polls
-               $sql ="SELECT COUNT(*) FROM user_polls WHERE user_polls.user_id = :user_id";
-               
+               $sql ="SELECT COUNT(*) FROM user_polls WHERE user_id = :user_id";
                $stmp = $db->prepare($sql);
                $stmp->execute();
+               $stmp->execute(array(
+                    ":user_id"=>$user_id
+               ));
                $answered_polls = $stmp->fetch();
 
-
-               return $answered_polls;
+               return $answered_polls[0];
 
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
@@ -604,13 +604,8 @@
           try {
                $db = new PDO($db_connection);
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
-
-               // get all answered_polls
-               $sql ="SELECT COUNT(*) FROM user_polls WHERE user_polls.user_id = :user_id";
-               $stmp = $db->prepare($sql);
-               $stmp->execute();
-               $answered_polls = $stmp->fetch();
-
+               
+               $answered_polls = get_all_answered_polls_by_user($user_id);
 
                 // get all polls from polls table
                $sql ="SELECT COUNT(*) FROM polls";
@@ -618,7 +613,7 @@
                $stmp->execute();
                $total_polls = $stmp->fetch();
 
-               $unanswered_polls = $total_polls - $answered_polls;
+               $unanswered_polls = $total_polls[0] - $answered_polls;
 
                return $unanswered_polls;
 

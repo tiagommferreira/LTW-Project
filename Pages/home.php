@@ -1,6 +1,8 @@
 <?php
 	session_start(); 
 	$user = unserialize($_SESSION['user']);
+	chdir('Pages/');
+	include '../database/manage_database.php';
 ?>
 
 <div class="title">
@@ -17,12 +19,10 @@
 		<div class="body">
 
 			<?php
-				chdir('Pages/');	// change dir in order to includes work fine
-				include '../database/manage_database.php';
+				//chdir('Pages/');	// change dir in order to includes work fine
 				$all_polls = get_all_polls_by_user($user->getID());
 				chdir('../');	// change dir to last dir
 			?>
-
 			<center>
 			<div class="number">
 				<?php echo count($all_polls); ?>
@@ -31,7 +31,6 @@
 		</div>
 	</div>
 
-
 	<div class="info-box info-box-blue">
 		<div class="header">
 			<h1>Polls Answered</h1>
@@ -39,19 +38,17 @@
 		<div class="body">
 			<?php
 				chdir('Pages/');	// change dir in order to includes work fine
-				include '../database/manage_database.php';
 				$answered_polls = get_all_answered_polls_by_user($user->getID());
+				//$answered_polls = 5;
 				chdir('../');	// change dir to last dir
 			?>
 			<center>
 			<div class="number">
-				
 				<?php echo $answered_polls ?>
 			</div>
 			</center>
 		</div>
 	</div>
-
 
 	<div class="info-box info-box-blue">
 		<div class="header">
@@ -60,8 +57,8 @@
 		<div class="body">
 			<?php
 				chdir('Pages/');	// change dir in order to includes work fine
-				include '../database/manage_database.php';
 				$unanswered_polls = get_all_unanswered_polls_by_user($user->getID());
+				//$unanswered_polls = 5;
 				chdir('../');	// change dir to last dir
 			?>
 			<center>
