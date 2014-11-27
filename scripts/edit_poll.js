@@ -30,5 +30,5 @@ function openEditModal(button){
 }
 
 $(document).ready(function() {
-		// $('#polls_list').DataTable();
-	} );
+	    $('#manage_polls_list').DataTable();
+} );

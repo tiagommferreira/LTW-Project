@@ -29,4 +29,4 @@ function openVoteModal(button){
 
 $(document).ready(function() {
 	    $('#polls_list').DataTable();
-	} );
+} );

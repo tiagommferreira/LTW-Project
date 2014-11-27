@@ -34,16 +34,6 @@
 	            <td><center><?php echo $poll->getQuestion(); ?> </center></td>
 	            <td><center><?php echo count($poll->getAnswers()); ?> </center></td>
 	            <td><center><?php echo $poll->getAnswersReceived(); ?> </center></td>
-	 			<!--
-	            <td><center>
-	            <?php 
-	            chdir('Pages/');	// change dir in order to includes work fine
-	            $user_poll = get_user_by_id($poll->getUserID());
-	            echo $user_poll->getUsername();
-	            chdir('../');	// change dir in order to includes work fine
-	            ?> 
-	            </center></td>
-	            -->
 	            <!-- TODO: ONCLICK -->
 	            <td><center>
 	            	<button id="<?php echo $poll->getID(); ?>" onclick="" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-cogs fa-lg"></i></button>
