@@ -112,7 +112,7 @@ class User{
 	*	@return boolean True when user is successfully authenticated. False otherwise.
 	*/
 	public function auth(){
-		include('../database/manage_database.php');
+		include_once('../database/manage_database.php');
 
 		if($this->exists() == false){
 			echo "User not found.<br>";

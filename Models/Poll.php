@@ -7,6 +7,7 @@ class Poll{
 	protected $answers;
 	protected $user_id;
 	protected $answers_received;
+	protected $isPrivate;
 
 	/** Poll database table name */
 	private $table_name = 'polls';
@@ -46,6 +47,11 @@ class Poll{
 	* @return integer poll number of answers received.
 	*/
 	public function getAnswersReceived(){ return $this->answers_received; }
+
+	/**
+	* @return bollean poll private or not.
+	*/
+	public function getPrivate(){ return $this->isPrivate; }
 
 
 
@@ -94,6 +100,14 @@ class Poll{
 	*/
 	public function setAnswersReceived($answers_received){
 		$this->answers_received = $answers_received;
+	}
+
+	/**
+	* Set poll privacy.
+	* @param $isPrivate Bollean with poll's privacy.
+	*/
+	public function setPrivate($isPrivate){
+		$this->isPrivate = $isPrivate;
 	}
 
 	public function save(){

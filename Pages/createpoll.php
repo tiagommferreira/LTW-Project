@@ -1,9 +1,9 @@
 <?php 
-	session_start(); 
-	$user = unserialize($_SESSION['user']);
+session_start(); 
+$user = unserialize($_SESSION['user']);
 ?>
 <div class="title">
-<h1>Create Poll</h1>
+	<h1>Create Poll</h1>
 
 </div>
 
@@ -21,11 +21,17 @@
 				</center>
 			</div>
 		</div>
-		<br><br>
+		<br><br><br>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox"> Private
+			</label>
+		</div>
+		<br>
 		Answers:
 		<div class="possible_answers">
 			<input type="text" name="option_1" class="poll-option" placeholder="Write your answer..."><br>
-    		<input type="text" name="option_2" class="poll-option" placeholder="Write your answer..."><br>
+			<input type="text" name="option_2" class="poll-option" placeholder="Write your answer..."><br>
 		</div>
 		<div class="plus-button">
 			<i id="add-answer" class="fa fa-plus-circle fa-lg" style="color: #069;"></i>
