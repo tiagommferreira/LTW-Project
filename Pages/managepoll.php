@@ -39,7 +39,7 @@
 
 	            	<button id="<?php echo $poll->getID(); ?>" onclick="pollStatistics(this);" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-pie-chart fa-lg" style="color: #E8D500;"></i></button>
 	            	<button id="<?php echo $poll->getID(); ?>" onclick="" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-cogs fa-lg" style="color: black;"></i></button>
-	            	<button id="<?php echo $poll->getID(); ?>" onclick="" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-times fa-lg" style="color: red;"></i></button>		
+	            	<button id="<?php echo $poll->getID(); ?>" onclick="deletePoll(this)" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-times fa-lg" style="color: red;"></i></button>		
 	            	
 	            	</center></td>
 	        </tr>

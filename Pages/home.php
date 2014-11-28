@@ -58,7 +58,6 @@
 			<?php
 				chdir('Pages/');	// change dir in order to includes work fine
 				$unanswered_polls = get_all_unanswered_polls_by_user($user->getID());
-				//$unanswered_polls = 5;
 				chdir('../');	// change dir to last dir
 			?>
 			<center>

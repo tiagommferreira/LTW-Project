@@ -2,39 +2,28 @@ var api_return_res;
 
 
 function pollAPI(BASE_URL, poll_id){
-
-
 	var answers_array =[];
 	var answers_votes_array = [];
-
-	
-
 }
 
-function pollStatistics(button){
-	//TODO
-
-	
+function pollStatistics(button){	
 	// base url pc
-	//var BASE_URL = "http://localhost:80/proj";
-	var BASE_URL = "http://ltw.feup:8888/projetoLTW";
+	var BASE_URL = "http://localhost:80/proj";
+	//var BASE_URL = "http://ltw.feup:8888/projetoLTW";
 	//
 	// base url da feup
 	//var BASE_URL = "http://gnomo.fe.up.pt/~ei12050/projetoLTW"
 	
 	var poll_id = $(button).attr("id");
 
-	
-
 	var answers_array =[];
 	var answers_votes_array = [];
 
-
-    var poll = $.ajax({
-      url: BASE_URL+'/api/polls.php?id='+poll_id,
-      dataType:"jsonp",
-      async: false
-    }).responseText;
+	var poll = $.ajax({
+		url: BASE_URL+'/api/polls.php?id='+poll_id,
+		dataType:"jsonp",
+		async: false
+	}).responseText;
 
     // poll object
     var object = JSON.parse(poll);
@@ -46,16 +35,16 @@ function pollStatistics(button){
 
     for(var i = 0; i < answers_id.length; i++){
 
-	    var poll_answers = $.ajax({
-	      url: BASE_URL+'/api/polls.php?answer_id='+answers_id[i],
-	      dataType:"jsonp",
-	      async: false
-	    }).responseText;
+    	var poll_answers = $.ajax({
+    		url: BASE_URL+'/api/polls.php?answer_id='+answers_id[i],
+    		dataType:"jsonp",
+    		async: false
+    	}).responseText;
 
 	    // answer object
-	     var object_aux = JSON.parse(poll_answers);
-	     answers_votes_array.push(object_aux.answer_by_id.votes);
-	     poll_answers_array.push(object_aux.answer_by_id.answer);
+	    var object_aux = JSON.parse(poll_answers);
+	    answers_votes_array.push(object_aux.answer_by_id.votes);
+	    poll_answers_array.push(object_aux.answer_by_id.answer);
 	}
 
 	$("h3[id='poll_modal_title']").text(object.by_id.question);
@@ -69,24 +58,36 @@ function pollStatistics(button){
 		aux['value'] =answers_votes_array[i];
 		data_array.push(aux);
 	}
-//Morris charts snippet - js
+	//Morris charts snippet - js
 	$( "#poll_chart" ).empty();
 	$.getScript('http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',function(){
-	$.getScript('http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js',function(){
+		$.getScript('http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js',function(){
 
-      Morris.Donut({
-        element: 'poll_chart',
-        data: data_array
-      });
-      
-  
+			Morris.Donut({
+				element: 'poll_chart',
+				data: data_array
+			});
+
+
+		});
 	});
-});
 
 	$('#poll_statistic_modal').modal("show");
 	
 }
 
+function deletePoll(button) {
+	var poll_id = $(button).attr("id");
+	var url = window.location.pathname;
+	var url2 = url.replace('/user.php','/Polls/delete.php');
+	$.ajax({
+    	url: url2,
+    	type: 'post',
+    	data: { "callDelete": poll_id},
+    	success: function(response) { alert(response); location.reload(); }
+	});
+}
+
 $(document).ready(function() {
-	    $('#manage_polls_list').DataTable();
+	$('#manage_polls_list').DataTable();
 } );

@@ -1,20 +1,20 @@
 <?php
-     include_once('database.php');
+include_once('database.php');
 
-     function connect(){
-          include 'database.php';
+function connect(){
+     include 'database.php';
 
-          $db_connection = 'sqlite:'. $database_name;
+     $db_connection = 'sqlite:'. $database_name;
 
-          try {
-               $db = new PDO($db_connection);
+     try {
+          $db = new PDO($db_connection);
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
 
                return $db;
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
-          }
-     }
+         }
+    }
 
      /**
      * Create all database tables.
@@ -30,19 +30,19 @@
 
                // create users table
                $sql ="CREATE TABLE IF NOT EXISTS ".$user_table_name."(
-               ID INTEGER PRIMARY KEY NOT NULL,
-               username VARCHAR( 50 ) NOT NULL,
-               email VARCHAR( 250 ) NOT NULL,
-               password VARCHAR( 150 ) NOT NULL);";
+                    ID INTEGER PRIMARY KEY NOT NULL,
+                    username VARCHAR( 50 ) NOT NULL,
+                    email VARCHAR( 250 ) NOT NULL,
+                    password VARCHAR( 150 ) NOT NULL);";
 
-               $db->exec($sql);
-               print("Users table created.\n");
+$db->exec($sql);
+print("Users table created.\n");
 
-               $db = null;
-          } catch(PDOException $e) {
+$db = null;
+} catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
-          }
-     }
+         }
+    }
 
      /**
      * Delete all database tables.
@@ -65,9 +65,9 @@
 
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
-          }
+         }
 
-     }
+    }
 
      /**
      * Get list of all users
@@ -98,8 +98,8 @@
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
-     }
+         }
+    }
 
      /**
      * Get user with username $username
@@ -119,7 +119,7 @@
                $stmp = $db->prepare($sql);
                $stmp->execute(array(
                     ":username" => $username,
-               ));
+                    ));
 
                $user = $stmp->fetch();
                $userModel = new User;
@@ -134,8 +134,8 @@
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
-     }
+         }
+    }
 
      /**
      * Get user with email $email
@@ -155,7 +155,7 @@
                $stmp = $db->prepare($sql);
                $stmp->execute(array(
                     ":email" => $email,
-               ));
+                    ));
 
                $user = $stmp->fetch();
                $userModel = new User;
@@ -170,15 +170,15 @@
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
-     }
+         }
+    }
 
       /**
      * Get user with ID $id
      * @param $id Integer with user id
      * @return User Return user of type User
      */
-     function get_user_by_id($id){
+      function get_user_by_id($id){
           include 'database.php';
           $db_connection = 'sqlite:'.$database_name;
           try {
@@ -191,7 +191,7 @@
                $stmp = $db->prepare($sql);
                $stmp->execute(array(
                     ":id" => $id,
-               ));
+                    ));
 
                $user = $stmp->fetch();
                $userModel = new User;
@@ -206,8 +206,8 @@
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
-     }
+         }
+    }
 
 
      /**
@@ -240,8 +240,8 @@
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
-     }
+         }
+    }
 
 
 
@@ -256,7 +256,7 @@
      */
      function save_poll($question, $answers, $image){
           include 'database.php';
-         
+
           session_start();
 
           $db_connection = 'sqlite:'.$database_name;
@@ -301,19 +301,19 @@
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
-     }
+         }
+    }
 
 
-     function get_all_polls(){
-          include 'database.php';
-          include_once '../Models/Poll.php';
-          include_once '../Models/User.php';
+    function get_all_polls(){
+     include 'database.php';
+     include_once '../Models/Poll.php';
+     include_once '../Models/User.php';
 
-          $db_connection = 'sqlite:'.$database_name;
+     $db_connection = 'sqlite:'.$database_name;
 
-          try {
-               $db = new PDO($db_connection);
+     try {
+          $db = new PDO($db_connection);
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
 
                // get all polls from polls table
@@ -359,20 +359,20 @@
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
-     }
+         }
+    }
 
 
 
-     function get_all_polls_by_user($user_id){
-          include 'database.php';
-          include_once '../Models/Poll.php';
-          include_once '../Models/User.php';
+    function get_all_polls_by_user($user_id){
+     include 'database.php';
+     include_once '../Models/Poll.php';
+     include_once '../Models/User.php';
 
-          $db_connection = 'sqlite:'.$database_name;
+     $db_connection = 'sqlite:'.$database_name;
 
-          try {
-               $db = new PDO($db_connection);
+     try {
+          $db = new PDO($db_connection);
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
 
                // get all polls from polls table
@@ -380,7 +380,7 @@
                $stmp = $db->prepare($sql);
                $stmp->execute(array(
                     ":user_id" => $user_id
-               ));
+                    ));
                $polls_array = $stmp->fetchAll();
 
                $polls_final_array = array();
@@ -420,18 +420,18 @@
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
-     }
+         }
+    }
 
-     function get_answer_by_id($id){
-          include 'database.php';
-          include_once '../Models/Poll.php';
-          include_once '../Models/User.php';
+    function get_answer_by_id($id){
+     include 'database.php';
+     include_once '../Models/Poll.php';
+     include_once '../Models/User.php';
 
-          $db_connection = 'sqlite:'.$database_name;
+     $db_connection = 'sqlite:'.$database_name;
 
-          try {
-               $db = new PDO($db_connection);
+     try {
+          $db = new PDO($db_connection);
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
 
                // get answer with id
@@ -439,8 +439,8 @@
                $sql ="SELECT * FROM polls_answers WHERE ID = :id"; 
                $stmp = $db->prepare($sql);
                $stmp->execute(array(
-                         ":id" => $id
-               ));
+                    ":id" => $id
+                    ));
                $answer = $stmp->fetch();
 
                return $answer;
@@ -448,18 +448,18 @@
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
-     }
+         }
+    }
 
-     function get_poll_by_id($id){
-          include 'database.php';
-          include_once '../Models/Poll.php';
-          include_once '../Models/User.php';
+    function get_poll_by_id($id){
+     include 'database.php';
+     include_once '../Models/Poll.php';
+     include_once '../Models/User.php';
 
-          $db_connection = 'sqlite:'.$database_name;
+     $db_connection = 'sqlite:'.$database_name;
 
-          try {
-               $db = new PDO($db_connection);
+     try {
+          $db = new PDO($db_connection);
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
 
                // get all polls from polls table
@@ -467,7 +467,7 @@
                $stmp = $db->prepare($sql);
                $stmp->execute(array(
                     ":id"=>$id
-               ));
+                    ));
                $poll = $stmp->fetch();
 
                
@@ -476,8 +476,8 @@
                $sql ="SELECT * FROM polls_answers WHERE poll_id = :poll_id"; 
                $stmp = $db->prepare($sql);
                $stmp->execute(array(
-                         ":poll_id" => $poll['ID']
-               ));
+                    ":poll_id" => $poll['ID']
+                    ));
                $poll_answers = $stmp->fetchAll();
 
                $poll_final_answers = array();
@@ -505,21 +505,21 @@
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
-     }
+         }
+    }
 
 
 
 
-     function vote_poll($poll_id, $user_id, $answer_id){
-          include 'database.php';
-          include_once '../Models/Poll.php';
-          include_once '../Models/User.php';
+    function vote_poll($poll_id, $user_id, $answer_id){
+     include 'database.php';
+     include_once '../Models/Poll.php';
+     include_once '../Models/User.php';
 
-          $db_connection = 'sqlite:'.$database_name;
+     $db_connection = 'sqlite:'.$database_name;
 
-          try {
-               $db = new PDO($db_connection);
+     try {
+          $db = new PDO($db_connection);
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
 
 
@@ -527,9 +527,9 @@
                $sql ="SELECT * FROM user_polls WHERE user_id = :user_id AND polls_id = :polls_id" ; 
                $stmp = $db->prepare($sql);
                $stmp->execute(array(
-                         ":user_id" => $user_id,
-                         ":polls_id" => $poll_id
-               ));
+                    ":user_id" => $user_id,
+                    ":polls_id" => $poll_id
+                    ));
                $user_votes = $stmp->fetchAll();
 
                if(count($user_votes) > 0){
@@ -543,7 +543,7 @@
                     ":user_id"=>$user_id,
                     ":polls_id"=>$poll_id,
                     ":answer_id"=>$answer_id
-               ));
+                    ));
 
                $poll = get_answer_by_id($answer_id);
 
@@ -554,27 +554,27 @@
                $stmp->execute(array(
                     ":votes"=>$new_votes,
                     ":id"=>$answer_id
-               ));
+                    ));
 
                return true;
 
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
-     }
+         }
+    }
 
 
 //started to get answered_polls
- function get_all_answered_polls_by_user($user_id){
-          include 'database.php';
-          include_once '../Models/Poll.php';
-          include_once '../Models/User.php';
+    function get_all_answered_polls_by_user($user_id){
+     include 'database.php';
+     include_once '../Models/Poll.php';
+     include_once '../Models/User.php';
 
-          $db_connection = 'sqlite:'.$database_name;
+     $db_connection = 'sqlite:'.$database_name;
 
-          try {
-               $db = new PDO($db_connection);
+     try {
+          $db = new PDO($db_connection);
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
 
                // get all answered_polls
@@ -583,7 +583,7 @@
                $stmp->execute();
                $stmp->execute(array(
                     ":user_id"=>$user_id
-               ));
+                    ));
                $answered_polls = $stmp->fetch();
 
                return $answered_polls[0];
@@ -591,18 +591,18 @@
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
-     }
+         }
+    }
 
- function get_all_unanswered_polls_by_user($user_id){
-          include 'database.php';
-          include_once '../Models/Poll.php';
-          include_once '../Models/User.php';
+    function get_all_unanswered_polls_by_user($user_id){
+     include 'database.php';
+     include_once '../Models/Poll.php';
+     include_once '../Models/User.php';
 
-          $db_connection = 'sqlite:'.$database_name;
+     $db_connection = 'sqlite:'.$database_name;
 
-          try {
-               $db = new PDO($db_connection);
+     try {
+          $db = new PDO($db_connection);
                $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
                
                $answered_polls = get_all_answered_polls_by_user($user_id);
@@ -620,8 +620,45 @@
           } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code
               return false;
-          }
+         }
+    }
+    
+    function delete_poll($poll_id){
+         include 'database.php';
+         include_once '../Models/Poll.php';
+         include_once '../Models/User.php';
+
+         $db_connection = 'sqlite:'.$database_name;
+
+         try {
+              $db = new PDO($db_connection);
+           $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+           $sql ="DELETE FROM polls WHERE ID = :poll_id" ; 
+           $stmp = $db->prepare($sql);
+           $stmp->execute(array(
+              ":poll_id" => $poll_id
+              ));
+
+           $sql ="DELETE FROM polls_answers WHERE poll_id = :poll_id" ; 
+           $stmp = $db->prepare($sql);
+           $stmp->execute(array(
+              ":poll_id" => $poll_id
+              ));
+
+           $sql ="DELETE FROM user_polls WHERE polls_id = :poll_id" ; 
+           $stmp = $db->prepare($sql);
+           $stmp->execute(array(
+              ":poll_id" => $poll_id
+              ));
+
+           return true;
+
+      } catch(PDOException $e) {
+          echo $e->getMessage();//Remove or change message in production code
+          return false;
      }
+}
 
 
 

@@ -102,13 +102,16 @@ class Poll{
 		return save_poll($this->question, $this->answers, $this->image);
 	}
 
-
-
 	public function vote($user_id, $answer_id){
 		include_once('../database/manage_database.php');
 		session_start();
 		return vote_poll($this->id, $user_id, $answer_id);
 	}
+	
+	public function delete(){
+		include_once('../database/manage_database.php');
+		return delete_poll($this->id);
+	}	
 }
 
 ?>
