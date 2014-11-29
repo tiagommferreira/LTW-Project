@@ -97,18 +97,55 @@ function editPoll(button) {
 	//var BASE_URL = "http://gnomo.fe.up.pt/~ei12050/projetoLTW"
 	
 	var poll_id = $(button).attr("id");
+	$(".id_poll").attr("value", poll_id);
+
+	var url = window.location.pathname;
+	var url2 = url.replace('/user.php','/Polls/update.php');
+	$.ajax({
+    	url: url2,
+    	type: 'post',
+    	data: { "callCheckPrivate": poll_id},
+    	success: function(response) {
+    		console.log(response);
+    		if(response == 1) {
+    			$(".checkboxPrivate").prop('checked', true);
+    		} 
+    		else {
+    			$(".checkboxPrivate").prop('checked', false);
+    		}
+    	}
+	});
 
 	// get poll by id
-	$.getJSON(BASE_URL+'/api/polls.php?id='+poll_id, function( data ) {
-		$(".poll-form-input").val(data.by_id.question);
-		var answers = data.by_id.answers;
+
+	var data = $.ajax({
+    	url: BASE_URL+'/api/polls.php?id='+poll_id,
+    	dataType:"jsonp",
+    	async: false
+    }).responseText;
+
+	var answers_data = JSON.parse(data);
+
+	$(".poll-form-input").val(answers_data.by_id.question);
+		var answers = answers_data.by_id.answers;
 		$( "#poll_edit_answers" ).empty();	// empty options div
-		for (i = 0; i < answers.length; i++) {  
-			$.getJSON(BASE_URL+'/api/polls.php?answer_id='+answers[i], function( data_answer ) {
-				$( "#poll_edit_answers" ).append('<p> -	   '+data_answer.answer_by_id.answer+ '</p>');
-			});
-   		}
-	});
+		for (i = 0; i < answers.length; i++) { 
+			var answer = $.ajax({
+    			url: BASE_URL+'/api/polls.php?answer_id='+answers[i],
+    			dataType:"jsonp",
+    			async: false
+    		}).responseText;
+
+    		var data_answer = JSON.parse(answer);
+    		$("#poll_edit_answers").append('<input type="text" name="option_'+ 5 + '" class="poll-option" value="'+ data_answer.answer_by_id.answer +'" id= "'+ data_answer.answer_by_id.id +'" readonly="true"><i id="remove-answer-management" class="fa fa-minus-circle fa-lg" style="color: red;"></i><br>');
+		}
+
+
+	var choices = $('#poll_edit_answers').children("input");
+	console.log(choices);
+	for(i = 0; i < choices.length; i++) {
+		choices.eq(i).attr("name", "option_"+(i+1));
+	}
 
 	$('#poll_edit_modal').modal("show");
 }

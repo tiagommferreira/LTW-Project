@@ -254,7 +254,7 @@ $db = null;
      * @param $password String with hashed password
      * @return boolean Return true if added successfully. False otherwise.
      */
-     function save_poll($question, $answers, $image){
+     function save_poll($question, $answers, $image, $isPrivate){
       include 'database.php';
 
       session_start();
@@ -268,12 +268,13 @@ $db = null;
                $currentUser = unserialize($_SESSION['user']);
 
                // insert poll into polls table
-               $sql ="INSERT INTO polls(user_id, image, question) VALUES (:user_id, :image, :question);";
+               $sql ="INSERT INTO polls(user_id, image, question, private) VALUES (:user_id, :image, :question, :private);";
                $stmp = $db->prepare($sql);
                $stmp->execute(array(
                 ":user_id" => $currentUser->getID(),
                 ":image" => $image,
-                ":question" => $question
+                ":question" => $question,
+                ":private" => $isPrivate
                 ));
 
                // get poll ID from polls table
@@ -318,6 +319,63 @@ $db = null;
 
                // get all polls from polls table
                $sql ="SELECT * FROM polls";
+               $stmp = $db->prepare($sql);
+               $stmp->execute();
+               $polls_array = $stmp->fetchAll();
+
+               $polls_final_array = array();
+               
+               // get all answers of poll
+               foreach($polls_array as $poll){
+
+                $sql ="SELECT * FROM polls_answers WHERE poll_id = :poll_id"; 
+                $stmp = $db->prepare($sql);
+                $stmp->execute(array(
+                 ":poll_id" => $poll['ID']
+                 ));
+                $poll_answers = $stmp->fetchAll();
+
+                $poll_final_answers = array();
+                $answersReceived = 0;
+                foreach ($poll_answers as $poll_answer) {
+                 array_push($poll_final_answers, $poll_answer['answer']);
+                 $answersReceived = $answersReceived + intval($poll_answer['votes']);
+               }
+
+
+               $final_poll = new Poll;
+               $final_poll->setID($poll['ID']);
+               $final_poll->setQuestion($poll['question']);
+               $final_poll->setAnswers($poll_answers);
+               $final_poll->setImage("");
+               $final_poll->setUserID(intval($poll['user_id']));
+               $final_poll->setAnswersReceived($answersReceived);
+
+               array_push($polls_final_array, $final_poll);
+             }
+
+
+             return $polls_final_array;
+
+           } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+            }
+          }
+
+          function get_all_public_polls(){
+           include 'database.php';
+           include_once '../Models/Poll.php';
+           include_once '../Models/User.php';
+
+           $db_connection = 'sqlite:'.$database_name;
+
+           try {
+            $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+               // get all polls from polls table
+               $sql ="SELECT * FROM polls WHERE private = 0";
                $stmp = $db->prepare($sql);
                $stmp->execute();
                $polls_array = $stmp->fetchAll();
@@ -495,6 +553,7 @@ $db = null;
               $final_poll->setImage("");
               $final_poll->setUserID(intval($poll['user_id']));
               $final_poll->setAnswersReceived($answersReceived);
+              $final_poll->setPrivate($poll['private']);
 
               $poll_final_array = array();
               $poll_final_array['poll']=$final_poll;

@@ -113,7 +113,7 @@ class Poll{
 	public function save(){
 		include_once('../database/manage_database.php');
 		session_start();
-		return save_poll($this->question, $this->answers, $this->image);
+		return save_poll($this->question, $this->answers, $this->image, $this->isPrivate);
 	}
 
 	public function vote($user_id, $answer_id){

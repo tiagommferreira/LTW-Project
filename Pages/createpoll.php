@@ -24,7 +24,7 @@ $user = unserialize($_SESSION['user']);
 		<br><br><br>
 		<div class="checkbox">
 			<label>
-				<input type="checkbox"> Private
+				<input type="checkbox" name="checkbox[]"> Private
 			</label>
 		</div>
 		<br>

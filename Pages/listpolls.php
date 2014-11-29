@@ -25,7 +25,7 @@
 			<?php
 				chdir('Pages/');	// change dir in order to includes work fine
 				include '../database/manage_database.php';
-				$all_polls = get_all_polls();
+				$all_polls = get_all_public_polls();
 				chdir('../');	// change dir to last dir
 				if($all_polls!=false){
 					foreach($all_polls as $poll){

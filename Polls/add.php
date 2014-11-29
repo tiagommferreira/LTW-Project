@@ -14,7 +14,6 @@
 		$counter++;
 	}
 
-
 	$poll = new Poll;
 	$poll->setQuestion($question);
 	$poll->setAnswers($answers);
@@ -22,6 +21,12 @@
 	$poll->setUserID($user->getID());
 	$poll->setAnswersReceived(0);
 
+	if(isset($_POST['checkbox'])) {
+  		$poll->setPrivate(1);
+	}
+	else {
+		$poll->setPrivate(0);
+	}
 
 	if($poll->save() == true){
 		echo '<script>alert("Poll added successfully!")</script>';

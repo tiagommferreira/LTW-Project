@@ -34,7 +34,6 @@
 	            <td><center><?php echo $poll->getQuestion(); ?> </center></td>
 	            <td><center><?php echo count($poll->getAnswers()); ?> </center></td>
 	            <td><center><?php echo $poll->getAnswersReceived(); ?> </center></td>
-	            <!-- TODO: ONCLICK -->
 	            <td><center>
 
 	            	<button id="<?php echo $poll->getID(); ?>" onclick="pollStatistics(this);" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-pie-chart fa-lg" style="color: #E8D500;"></i></button>
@@ -108,19 +107,34 @@
 	<div id="poll_edit_modal" class="modal fade">
 	 	<div class="modal-dialog">
 	    	<div class="modal-content">
-	    		<form class="poll-form" action="Polls/add.php" method="post">
+	    		<form class="poll-form" action="Polls/update.php" method="post">
 		      		<div class="modal-header">
 		        		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 		        		<input type="text" name="poll_question" class="poll-form-input" placeholder="Write your question...">
 		      		</div>
 		      		<div class="modal-body">
-	      				<h4>Options: </h4>
+		      			<input type="text" name="poll_id" style="display:none" class="id_poll">
+		      			<div class="checkbox">
+							<label>
+								<input type="checkbox" name="checkbox[]" class="checkboxPrivate"> Private
+							</label>
+							<br><br>
+						</div>
+		      			<div class="poll-image">
+							Poll Image:<br>
+							<div class="image-upload">
+								<center>
+									<i id="add-image-poll" class="fa fa-plus-circle fa-4x" style="color: gray;"></i>
+								</center>
+							</div>
+						</div>
+	      				<h4>Options:</h4>
 						<div class="possible_answers_management" id="poll_edit_answers">
 						</div>
 						<div class="plus-button">
 							<i id="add-answer-management" class="fa fa-plus-circle fa-lg" style="color: #069;"></i>
 						</div>
-						<input type="submit" value="Create Poll" class="poll-create-button">
+						<input type="submit" value="Create Poll" class="poll-edit-button">
 		      		</div>
 		      		<div class="modal-footer" >
 		        		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
