@@ -38,7 +38,7 @@
 	            <td><center>
 
 	            	<button id="<?php echo $poll->getID(); ?>" onclick="pollStatistics(this);" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-pie-chart fa-lg" style="color: #E8D500;"></i></button>
-	            	<button id="<?php echo $poll->getID(); ?>" onclick="" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-cogs fa-lg" style="color: black;"></i></button>
+	            	<button id="<?php echo $poll->getID(); ?>" onclick="editPoll(this)" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-cogs fa-lg" style="color: black;"></i></button>
 	            	<button id="<?php echo $poll->getID(); ?>" onclick="deletePoll(this)" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-times fa-lg" style="color: red;"></i></button>		
 	            	
 	            	</center></td>
@@ -103,5 +103,31 @@
 	    	</div><!-- /.modal-content -->
 	  	</div><!-- /.modal-dialog -->
 	</div>
+
+
+	<div id="poll_edit_modal" class="modal fade">
+	 	<div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<form class="poll-form" action="Polls/add.php" method="post">
+		      		<div class="modal-header">
+		        		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        		<input type="text" name="poll_question" class="poll-form-input" placeholder="Write your question...">
+		      		</div>
+		      		<div class="modal-body">
+	      				<h4>Options: </h4>
+						<div class="possible_answers_management" id="poll_edit_answers">
+						</div>
+						<div class="plus-button">
+							<i id="add-answer-management" class="fa fa-plus-circle fa-lg" style="color: #069;"></i>
+						</div>
+						<input type="submit" value="Create Poll" class="poll-create-button">
+		      		</div>
+		      		<div class="modal-footer" >
+		        		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+		      		</div>
+		      	</form>
+	    	</div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div> 
 
 </div>

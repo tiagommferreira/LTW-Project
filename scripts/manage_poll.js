@@ -15,7 +15,6 @@ function pollStatistics(button){
 	//var BASE_URL = "http://gnomo.fe.up.pt/~ei12050/projetoLTW"
 	
 	var poll_id = $(button).attr("id");
-	console.log(poll_id);
 
 	var answers_array =[];
 	var answers_votes_array = [];
@@ -87,6 +86,31 @@ function deletePoll(button) {
     	data: { "callDelete": poll_id},
     	success: function(response) { alert(response); location.reload(); }
 	});
+}
+
+function editPoll(button) {
+	// base url pc
+	var BASE_URL = "http://localhost:80/proj";
+	//var BASE_URL = "http://ltw.feup:8888/projetoLTW";
+	//
+	// base url da feup
+	//var BASE_URL = "http://gnomo.fe.up.pt/~ei12050/projetoLTW"
+	
+	var poll_id = $(button).attr("id");
+
+	// get poll by id
+	$.getJSON(BASE_URL+'/api/polls.php?id='+poll_id, function( data ) {
+		$(".poll-form-input").val(data.by_id.question);
+		var answers = data.by_id.answers;
+		$( "#poll_edit_answers" ).empty();	// empty options div
+		for (i = 0; i < answers.length; i++) {  
+			$.getJSON(BASE_URL+'/api/polls.php?answer_id='+answers[i], function( data_answer ) {
+				$( "#poll_edit_answers" ).append('<p> -	   '+data_answer.answer_by_id.answer+ '</p>');
+			});
+   		}
+	});
+
+	$('#poll_edit_modal').modal("show");
 }
 
 $(document).ready(function() {

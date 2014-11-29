@@ -29,6 +29,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <script src="scripts/script.js"></script>
   <script src="scripts/add_option_poll.js"></script>
+  <script src="scripts/add_option_management.js"></script>
   <script src="scripts/vote.js"></script>
   <script src="scripts/manage_poll.js"></script> 
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
