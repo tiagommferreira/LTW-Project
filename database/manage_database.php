@@ -509,8 +509,6 @@ $db = null;
           }
 
 
-
-
           function vote_poll($poll_id, $user_id, $answer_id){
            include 'database.php';
            include_once '../Models/Poll.php';
@@ -616,6 +614,42 @@ $db = null;
                $unanswered_polls = $total_polls[0] - $answered_polls;
 
                return $unanswered_polls;
+
+             } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+            }
+          }
+
+          function user_answered_poll($user_id, $poll_id){
+           include 'database.php';
+           include_once '../Models/Poll.php';
+           include_once '../Models/User.php';
+
+           $db_connection = 'sqlite:'.$database_name;
+
+           try {
+            $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+               // get all answered_polls
+               $sql ="SELECT rowid FROM user_polls WHERE user_id = :user_id AND polls_id = :poll_id";
+               $stmp = $db->prepare($sql);
+               $stmp->execute();
+               $stmp->execute(array(
+                ":user_id"=>$user_id,
+                ":poll_id"=>$poll_id
+                ));
+               $answered = $stmp->fetch(); 
+
+               if($answered[0] != "") {
+                return true;
+               }
+               else {
+                return false;
+               }
+
+               return $answered[0];
 
              } catch(PDOException $e) {
               echo $e->getMessage();//Remove or change message in production code

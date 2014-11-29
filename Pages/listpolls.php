@@ -45,7 +45,20 @@
 	            chdir('../');	// change dir in order to includes work fine
 	            ?> 
 	            </center></td>
-	            <td><center><button id="<?php echo $poll->getID(); ?>" onclick="openVoteModal(this);" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-reply fa-lg"></i></button></center></td>
+	            <td>
+	            	<center>
+	            		<?php
+	            			chdir('Pages/');	// change dir in order to includes work fine
+	            			$user_answered_poll = user_answered_poll($user->getID(),$poll->getID());
+				            if($user_answered_poll) {
+				            	$id = $poll->getID();
+				            	echo '<button id="'.$id.'" onclick="pollStatistics(this);" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-pie-chart fa-lg" style="color: #E8D500;"></i></button>';
+				            }
+				            chdir('../');		
+	            		?>
+	            		<button id="<?php echo $poll->getID(); ?>" onclick="openVoteModal(this);" style="border: 0px; background-color: rgba(255,0,0,0.0);"><i class="fa fa-reply fa-lg"></i></button>
+	            	</center>
+	            </td>
 	        </tr>
 
 	        <?php
@@ -55,6 +68,24 @@
 	        
 	    </tbody>
 	</table>
+
+	<div id="poll_statistic_modal" class="modal fade">
+	 	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        		<h3 id="poll_modal_title" class="modal-title">Modal title</h3>
+	      		</div>
+	      		<div class="modal-body">
+					<div class="possible_answers" id="poll_chart">
+					</div>
+	      		</div>
+	      		<div class="modal-footer" >
+	        		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+	      		</div>
+	    	</div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div>
 
 	<div id="poll_vote_modal" class="modal fade">
 	 	<div class="modal-dialog">

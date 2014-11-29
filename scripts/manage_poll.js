@@ -6,7 +6,7 @@ function pollAPI(BASE_URL, poll_id){
 	var answers_votes_array = [];
 }
 
-function pollStatistics(button){	
+function pollStatistics(button){
 	// base url pc
 	var BASE_URL = "http://localhost:80/proj";
 	//var BASE_URL = "http://ltw.feup:8888/projetoLTW";
@@ -15,6 +15,7 @@ function pollStatistics(button){
 	//var BASE_URL = "http://gnomo.fe.up.pt/~ei12050/projetoLTW"
 	
 	var poll_id = $(button).attr("id");
+	console.log(poll_id);
 
 	var answers_array =[];
 	var answers_votes_array = [];
@@ -28,7 +29,6 @@ function pollStatistics(button){
     // poll object
     var object = JSON.parse(poll);
     var answers_id = object.by_id.answers;
-
 
     var answers_votes_array = [];
     var poll_answers_array = [];
@@ -58,6 +58,7 @@ function pollStatistics(button){
 		aux['value'] =answers_votes_array[i];
 		data_array.push(aux);
 	}
+
 	//Morris charts snippet - js
 	$( "#poll_chart" ).empty();
 	$.getScript('http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',function(){

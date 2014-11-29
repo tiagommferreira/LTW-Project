@@ -53,9 +53,6 @@
 	</table>
 
 
-
-
-
 	<div id="poll_statistic_modal" class="modal fade">
 	 	<div class="modal-dialog">
 	    	<div class="modal-content">
