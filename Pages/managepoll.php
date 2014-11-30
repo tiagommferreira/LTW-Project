@@ -3,11 +3,27 @@
 	$user = unserialize($_SESSION['user']);
 ?>
 
+<script type="text/javascript">
+function checkbox()
+{
+    var priv=document.getElementById("priv").checked;
+    if(priv){ 
+
+    	document.writeln("private");
+    	return 1;
+    }
+    else{
+    	document.writeln("public");
+    	return 0;
+    }
+return false;   
+}
+</script>
+
 
 <div class="title">
 <h1>Manage Polls</h1>
 </div>
-
 <div class="content">
 
 	<table id="manage_polls_list" class="table table-striped table-hover">
@@ -116,7 +132,33 @@
 		      			<input type="text" name="poll_id" style="display:none" class="id_poll">
 		      			<div class="checkbox">
 							<label>
-								<input type="checkbox" name="checkbox[]" class="checkboxPrivate"> Private
+								<input type="checkbox" name="checkbox[]" id="priv" class="checkboxPrivate" onClick="return checkbox();" value="null"> Private
+								<?php
+										session_start();
+	
+										include '../Models/User.php';
+										include '../Models/Poll.php';	// include User model
+									    include '../database/manage_database.php';
+										$db_connection = 'sqlite:'.$database_name;
+
+									      try {
+									       $db = new PDO($db_connection);
+									        $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+											$poll_id = $_POST['poll_id'];
+											$value = $_POST['value'];
+									        $currentUser = unserialize($_SESSION['user']);
+									        $sql ="UPDATE polls SET private = $value WHERE id = $poll_id";
+									        $stmp = $db->prepare($sql);
+               								$stmp->execute(array());
+               								
+							            } catch(PDOException $e) {
+							              echo $e->getMessage();//Remove or change message in production code
+							              return false;
+							            }
+
+									   
+								?>
 							</label>
 							<br><br>
 						</div>
