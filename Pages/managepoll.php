@@ -134,7 +134,7 @@
 						<div class="plus-button">
 							<i id="add-answer-management" class="fa fa-plus-circle fa-lg" style="color: #069;"></i>
 						</div>
-						<input type="submit" value="Create Poll" class="poll-edit-button">
+						<input type="submit" value="Finish Editing" class="poll-edit-button">
 		      		</div>
 		      		<div class="modal-footer" >
 		        		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
