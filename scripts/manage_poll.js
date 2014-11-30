@@ -137,7 +137,7 @@ function editPoll(button) {
     		}).responseText;
 
     		var data_answer = JSON.parse(answer);
-    		$("#poll_edit_answers").append('<input type="text" name="option_'+ 5 + '" class="poll-option" value="'+ data_answer.answer_by_id.answer +'" id= "'+ data_answer.answer_by_id.id +'" readonly="true"><i id="remove-answer-management" class="fa fa-minus-circle fa-lg" style="color: red;"></i><br>');
+    		$("#poll_edit_answers").append('<input type="text" name="option_'+ 5 + '" class="poll-option" value="'+ data_answer.answer_by_id.answer +'" id= "'+ data_answer.answer_by_id.id +'" ><i id="remove-answer-management" class="fa fa-minus-circle fa-lg" style="color: red;"></i><br>');
 		}
 
 
