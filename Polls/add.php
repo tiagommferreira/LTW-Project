@@ -23,7 +23,7 @@
 	if($_FILES['poll_image']['name']!=""){
 		// Mantém o nome original do arquivo
 		$final_name = htmlentities($_FILES['poll_image']['name']);
-		$location = $_UP['folder'];
+		$location = "../".$_UP['folder'];
 
 		if(is_dir($location))
 	  	{
@@ -51,7 +51,7 @@
 	if($location==""){
 		$poll->setImage($location);	
 	}else{
-		$poll->setImage($location . $final_name);	
+		$poll->setImage($_UP['folder'] . $final_name);	
 	}
 	$poll->setUserID($user->getID());
 	$poll->setAnswersReceived(0);

@@ -34,7 +34,7 @@ $user = unserialize($_SESSION['user']);
 			</div>
 			</div>
 			<a id="clearFileInput" onclick="clearFileInput()" class="poll-create-button">
-				<i id="add-answer" class="fa fa-minus-circle fa-lg" style="color: red;"></i> Delete Image
+				<i  class="fa fa-minus-circle fa-lg" style="color: red;"></i> Delete Image
 			</a>
 
 		</div>
