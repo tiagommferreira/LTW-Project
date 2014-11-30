@@ -5,11 +5,11 @@
 	include '../Models/Poll.php';	// include User model
     $user = unserialize($_SESSION['user']);
     
-	$question = $_POST['poll_question'];
+	$question = htmlentities($_POST['poll_question']);
 	$answers = array();
 	$counter = 1;
 	while(isset($_POST['option_'.$counter])){
-		$answer = $_POST['option_'.$counter];
+		$answer = htmlentities($_POST['option_'.$counter]);
 		array_push($answers, $answer);
 		$counter++;
 	}
@@ -22,7 +22,7 @@
 
 	if($_FILES['poll_image']['name']!=""){
 		// Mantém o nome original do arquivo
-		$final_name = $_FILES['poll_image']['name'];
+		$final_name = htmlentities($_FILES['poll_image']['name']);
 		$location = $_UP['folder'];
 
 		if(is_dir($location))
