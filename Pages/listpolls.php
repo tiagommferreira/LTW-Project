@@ -96,14 +96,12 @@
 	      		</div>
 	      		<div class="modal-body">
 	      			<form class="poll-form" action="Polls/vote.php" method="post">
-						<div class="poll-image">
-							Poll Image:<br>
-							<div class="image-upload">
+							
+							<div id="poll_view_image" class="image-upload">
 								<center>
-									<i id="add-image-poll" class="fa fa-plus-circle fa-4x" style="color: gray;"></i>
+									<img id="preview" class="rounded-image"/>
 								</center>
 							</div>
-						</div>
 
 	      				<h4>Options: </h4>
 						<div class="possible_answers" id="poll_modal_answers">

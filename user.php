@@ -31,6 +31,7 @@
   <script src="scripts/add_option_poll.js"></script>
   <script src="scripts/add_option_management.js"></script>
   <script src="scripts/vote.js"></script>
+  <script src="scripts/upload_script.js"></script>
   <script src="scripts/manage_poll.js"></script> 
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 

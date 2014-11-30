@@ -465,7 +465,7 @@ $db = null;
                $final_poll->setID($poll['ID']);
                $final_poll->setQuestion($poll['question']);
                $final_poll->setAnswers($poll_answers);
-               $final_poll->setImage("");
+               $final_poll->setImage($poll['image']);
                $final_poll->setUserID(intval($poll['user_id']));
                $final_poll->setAnswersReceived($answersReceived);
 
@@ -550,7 +550,7 @@ $db = null;
               $final_poll->setID($poll['ID']);
               $final_poll->setQuestion($poll['question']);
               $final_poll->setAnswers($poll_final_answers);
-              $final_poll->setImage("");
+              $final_poll->setImage($poll['image']);
               $final_poll->setUserID(intval($poll['user_id']));
               $final_poll->setAnswersReceived($answersReceived);
               $final_poll->setPrivate($poll['private']);

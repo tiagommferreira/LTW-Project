@@ -141,13 +141,14 @@ body, html {
   background: linear-gradient(white , #D1D1D1); /* Standard syntax */
 }
 
-.image-upload{
+.image-preview{
   border: 1px solid gray;
   padding: 20%;
   border-radius: 10px;
   background-color: white;
   opacity: 0.4;
   vertical-align:middle;
+  display: inline-block;
 }
 .plus-button{
   margin: 1em;
@@ -204,5 +205,41 @@ body, html {
   color: #069;
 }
 
+.image_input_form{
+  margin-top: 5%;
+  border-radius: 10px;
+  padding: 2%;
+  background-color: white;
+  font-size: 16px;
+}
+
+.rounded-image{
+  border-radius: 30px;
+  width: 10px;
+}
+
+#clearFileInput{
+  color: black;
+  padding: 2%;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#fileinfo,#error,#error2,#abort,#warnsize {
+    color:#aaa;
+    display:none;
+    font-size:10pt;
+    font-style:italic;
+    margin-top:10px;
+}
 
 
+#preview {
+    background-color:#fff;
+    display:block;
+    width:200px;
+}
+
+#poll_view_image{
+  border-radius: 10px;
+}
