@@ -1,5 +1,14 @@
 var api_return_res;
 
+function clearFileInputManage(){
+
+    var input = $("#poll_image");
+    $("#poll_image_name").attr("value", "");
+    input.replaceWith(input.val('').clone(true));
+    $("#image-preview").replaceWith(image_preview_clone.clone());
+}
+
+
 
 function pollAPI(BASE_URL, poll_id){
 	var answers_array =[];
@@ -97,7 +106,7 @@ function editPoll(button) {
 	//var BASE_URL = "http://gnomo.fe.up.pt/~ei12050/projetoLTW"
 	
 	var poll_id = $(button).attr("id");
-	$(".id_poll").attr("value", poll_id);
+	$("#id_poll").attr("value", poll_id);
 
 	var url = window.location.pathname;
 	var url2 = url.replace('/user.php','/Polls/update.php');
@@ -128,7 +137,24 @@ function editPoll(button) {
 
 	$(".poll-form-input").val(answers_data.by_id.question);
 		var answers = answers_data.by_id.answers;
+		var image_location = answers_data.by_id.image;
+		console.log("image location = " + image_location);
+
 		$( "#poll_edit_answers" ).empty();	// empty options div
+		$("#poll_image_name").attr("value", image_location);
+
+		if(image_location==""){
+
+		}else{
+			$("#preview-icon").hide();
+			$("#preview").attr("src", image_location);
+
+  			$('#image-preview-inbox').css("opacity", "1");
+    		$('#image-preview-inbox').css("padding","2%");
+		}
+
+
+
 		for (i = 0; i < answers.length; i++) { 
 			var answer = $.ajax({
     			url: BASE_URL+'/api/polls.php?answer_id='+answers[i],

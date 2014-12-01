@@ -88,6 +88,7 @@ body, html {
 .poll-form-input{
   padding: 0.7em;
   min-width: 70%;
+  margin-right: 5%;
 }
 
 .poll-question{
@@ -149,6 +150,7 @@ body, html {
   opacity: 0.4;
   vertical-align:middle;
   display: inline-block;
+  max-width: 100%;
 }
 .plus-button{
   margin: 1em;
@@ -218,6 +220,10 @@ body, html {
   width: 10px;
 }
 
+.image-upload{
+  margin-bottom: 2%;
+}
+
 #clearFileInput{
   color: black;
   padding: 2%;
@@ -242,4 +248,21 @@ body, html {
 
 #poll_view_image{
   border-radius: 10px;
+}
+
+
+#share{
+  margin-top: 8%;
+}
+
+#share-fb{
+  margin-bottom: 1%;
+}
+#share-twitter{
+  margin-bottom: 1%;
+}
+
+#url_string{
+  border: solid 1px #ccc;
+  padding: 1%;
 }

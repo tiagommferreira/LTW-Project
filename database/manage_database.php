@@ -468,6 +468,7 @@ $db = null;
                $final_poll->setImage($poll['image']);
                $final_poll->setUserID(intval($poll['user_id']));
                $final_poll->setAnswersReceived($answersReceived);
+               $final_poll->setPrivate($poll['private']);
 
                array_push($polls_final_array, $final_poll);
              }

@@ -106,20 +106,18 @@
 	      				<h4>Options: </h4>
 						<div class="possible_answers" id="poll_modal_answers">
 						</div>
-						<input type="submit" value="Submit Vote" class="poll-vote-button">
-					</form>
-
+						
+								
 	      		</div>
 	      		<div class="modal-footer" >
+	      			<input type="submit" value="Submit Vote" class="btn btn-success">
 	        		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 	      		</div>
+	      		</form>
 	    	</div><!-- /.modal-content -->
 	  	</div><!-- /.modal-dialog -->
 	</div>
 
 
-<script type="text/javascript">
-	
-</script>
 
 </div>

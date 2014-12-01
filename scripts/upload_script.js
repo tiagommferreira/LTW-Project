@@ -10,8 +10,7 @@ function clearFileInput(){
 
 
 function fileSelected() {
-    image_preview_clone = $('#image-preview').clone();
-
+   
     // hide different warnings
     document.getElementById('error').style.display = 'none';
     document.getElementById('error2').style.display = 'none';
@@ -61,4 +60,9 @@ function fileSelected() {
     oReader.readAsDataURL(oFile);
 }
 
+
+
+$(document).ready(function() {
+     image_preview_clone = $('#image-preview').clone();
+} );
 

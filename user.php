@@ -7,7 +7,7 @@
     include 'Models/User.php';
 
     if(!isset($_SESSION['user'])){
-          echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
+        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
     }
     
     $user = unserialize($_SESSION['user']);
@@ -33,6 +33,7 @@
   <script src="scripts/vote.js"></script>
   <script src="scripts/upload_script.js"></script>
   <script src="scripts/manage_poll.js"></script> 
+  <script src="scripts/share_poll.js"></script> 
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 
@@ -61,6 +62,8 @@
     include 'Pages/listpolls.php';
   }else if($_GET['page'] == 'managepoll'){
     include 'Pages/managepoll.php';
+  }else if($_GET['page'] == 'viewpoll'){
+    include 'Pages/viewpoll.php';
   }
 
 
@@ -68,6 +71,15 @@
   ?>
   </div>
 
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 </body>
 </html>
