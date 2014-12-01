@@ -8,7 +8,6 @@
 <script src="scripts/register_validation.js"></script>
 <script src="scripts/login_validation.js"></script>
   
-  <?php echo $_SERVER['DOCUMENT_ROOT']; ?>
   <?php session_start(); ?>
 <body>
 <?php
@@ -16,6 +15,7 @@
     echo '<META HTTP-EQUIV="Refresh" Content="0; URL=user.php">';
   }
 ?>
+
   <h1 class="register-title">Sign-Up</h1>
   <form class="register" action="Auth/register.php" method="post">
     <input type="username" name="register_username" class="forms-input" placeholder="Username">
@@ -30,6 +30,11 @@
     <input type="password" name="login_password" class="forms-input" placeholder="Password">
     <input type="submit" value="Login" class="forms-button">
   </form>
+
+  <h1 id="about_us_button" class="about-us-title">About us</h1>
+    <div id="about_us">
+      Escrevam para aqui todo bonito a dizer o proposito do site.
+    </div>
 
 
  

@@ -35,6 +35,7 @@
 
 			<?php 
 				$answers = $poll->getAnswers();
+				echo count($answers);
 
 				for($i = 0; $i < count($answers); $i++){
 					?>

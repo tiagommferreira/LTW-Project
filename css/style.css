@@ -1,7 +1,7 @@
 body {
   font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #404040;
-  background: #2d4259;
+  background-image: url("arrive_background.jpg");
 }
 
 .register-title {
@@ -17,6 +17,18 @@ body {
 }
 
 .login-title {
+  width: 30%;
+  line-height: 3em;
+  margin: 0.5em auto 0.5em auto;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  text-shadow: 0 1.5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px rgba(0, 0, 0, 0.5);
+  background:linear-gradient(#dc745e, #d7604b);
+  border-radius: 4px;
+}
+
+.about-us-title {
   width: 30%;
   line-height: 3em;
   margin: 0.5em auto 0.5em auto;
@@ -101,4 +113,15 @@ input {
 
 .form-input-success{
   border-bottom: 2px solid green;
+}
+
+
+#about_us {
+  display: none;
+  margin: auto;
+  width: 23%;
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 3px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
