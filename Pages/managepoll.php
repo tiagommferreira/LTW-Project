@@ -1,5 +1,4 @@
 <?php
-	session_start(); 
 	$user = unserialize($_SESSION['user']);
 
 	$uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);

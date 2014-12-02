@@ -1,5 +1,4 @@
 <?php
-	session_start(); 
 	$user = unserialize($_SESSION['user']);
 	chdir('Pages/');
 	include '../database/manage_database.php';
