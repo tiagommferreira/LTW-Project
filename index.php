@@ -33,7 +33,23 @@
 
   <h1 id="about_us_button" class="about-us-title">About us</h1>
     <div id="about_us">
-      Escrevam para aqui todo bonito a dizer o proposito do site.
+    <p align=justify>
+      Hey, welcome to our website! <br>
+      We are basically a group of 3 classmates, that made this site a class that we atend at FEUP. <br>
+      That class is named LTW, short for "Linguagens e Tecnologias Web".<br>
+      The main purpose of this site is to provida a user based interface, for creating and voting on the polls that a user made and submited.<br>
+      In the main page, the user can see some stats. <br>
+      Basically how many polls you made, and how many public polls he hasn't answered yet.<br>
+      When creating a poll, the user can add as many response option he wants.<br>
+      He can even set it public or private, and add a photo.<br>
+      Pretty sweet, ahm? <br>
+      You can even assemble a list of some of the polls you made and send a link to your friends, share on Facebook or Twitter. <br>
+      We hope you have fun using our website, as much as we had making it <br>
+      <br>
+      José, José and Tiago.<br>
+	</p>
+
+
     </div>
 
 
