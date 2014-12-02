@@ -48,9 +48,9 @@
 	            <td><center>
 
 					<?php if($poll->getPrivate() == true){
-						echo '<i class="fa fa-check fa-lg" style="color: green;"></i>';
+						echo '<p style="display:none">1</p><i class="fa fa-check fa-lg" style="color: green;"></i>';
 					}else{
-						echo '<i class="fa fa-times fa-lg" style="color: red;"></i>';
+						echo '<p style="display:none">0</p><i class="fa fa-times fa-lg" style="color: red;"></i>';
 					}
 					?>
 	            </center></td>

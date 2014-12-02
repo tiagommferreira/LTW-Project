@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include_once('../database/manage_database.php');
   include_once('../Models/User.php');
   $user_final_array = array();
@@ -24,10 +25,14 @@
     }
   }
   if(isset($_GET['all'])){
-    $users = get_all_users();
+    if(!isset($_SESSION['user'])){
+      $user_final_array = array("error"=>"Not logged in.");
+    }else{
+      $users = get_all_users();
 
-    if($users!=false){
-       $user_final_array['all'] = $users;
+      if($users!=false){
+         $user_final_array['all'] = $users;
+      }
     }
   }
   echo json_encode($user_final_array);
