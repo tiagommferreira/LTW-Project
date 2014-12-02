@@ -751,9 +751,193 @@ $db = null;
          } catch(PDOException $e) {
           echo $e->getMessage();//Remove or change message in production code
           return false;
+          }
         }
-      }
+
+        
+        /**
+        * Add a list of polls to database
+        * @param $list_name string List name
+        * @return Integer List id
+        */
+        function add_list($list_name, $user_id){
+           include 'database.php';
+           include_once '../Models/Poll.php';
+           include_once '../Models/User.php';
+
+           $db_connection = 'sqlite:'.$database_name;
+
+           try {
+            $db = new PDO($db_connection);
+            $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+            $sql ="INSERT INTO list(name, user_id) VALUES (:name, :user_id)" ; 
+            $stmp = $db->prepare($sql);
+            $stmp->execute(array(
+            ":name" => $list_name,
+            ":user_id" => $user_id
+            ));
+
+            $list_id = $db->lastInsertId();
+
+            return $list_id;
+
+            } catch(PDOException $e) {
+                echo $e->getMessage();//Remove or change message in production code
+                return false;
+            }
+        }
+
+        /**
+        * Add a poll to a list of polls
+        * @param $list_id Integer List id
+        * @param $poll_id Integer
+        * @return Integer List id
+        */
+        function add_list_poll($list_id, $poll_id){
+            include 'database.php';
+           include_once '../Models/Poll.php';
+           include_once '../Models/User.php';
+
+           $db_connection = 'sqlite:'.$database_name;
+
+           try {
+            $db = new PDO($db_connection);
+            $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+            $sql ="INSERT INTO list_polls(list_id, poll_id) VALUES(:list_id, :poll_id)" ; 
+            $stmp = $db->prepare($sql);
+            $stmp->execute(array(
+            ":list_id" => $list_id,
+            ":poll_id" => $poll_id
+            ));
+
+            return true;
+
+            } catch(PDOException $e) {
+                echo $e->getMessage();//Remove or change message in production code
+                return false;
+            }
+        }
 
 
+        function get_list_polls_by_userid($user_id){
+          include 'database.php';
+           include_once '../Models/Poll.php';
+           include_once '../Models/User.php';
+           include_once '../Models/PollsList.php';
 
-      ?>
+           $db_connection = 'sqlite:'.$database_name;
+           $list_polls_array = array();
+
+           try {
+            $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+               
+               // get all polls from polls table
+               $sql ="SELECT * FROM list WHERE user_id = :user_id";
+               $stmp = $db->prepare($sql);
+               $stmp->execute(array(
+                ':user_id' => $user_id
+                ));
+               $total_polls = $stmp->fetchAll();
+
+               for($i = 0; $i < count($total_polls); $i++){
+                  // get all polls from polls table
+                  $sql ="SELECT * FROM list_polls WHERE list_id = :list_id";
+                  $stmp = $db->prepare($sql);
+                  $stmp->execute(array(
+                  ':list_id' => $total_polls[$i]['ID']
+                  ));
+                  $polls = $stmp->fetchAll();
+
+                  $poll_list = new PollsList;
+                  $poll_list->setID($total_polls[$i]['ID']);
+                  $polls_array = array();
+                  for($j = 0; $j < count($polls); $j++){
+                     array_push($polls_array, $polls[$i]);
+                  }
+                  $poll_list->setPolls($polls_array);
+                  $poll_list->setName($total_polls[$i]['name']);
+                  
+                  array_push($list_polls_array,$poll_list);
+               }
+                
+               return $list_polls_array;
+
+             } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+            }
+        }
+
+
+        function delete_list($list_id){
+           include 'database.php';
+           include_once '../Models/Poll.php';
+           include_once '../Models/User.php';
+           include_once '../Models/PollsList.php';
+
+           $db_connection = 'sqlite:'.$database_name;
+
+           try {
+            $db = new PDO($db_connection);
+           $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+
+           $sql ="DELETE FROM list WHERE ID = :list_id" ; 
+           $stmp = $db->prepare($sql);
+           $stmp->execute(array(
+            ":list_id" => $list_id
+            ));
+
+           $sql ="DELETE FROM list_polls WHERE list_id = :list_id" ; 
+           $stmp = $db->prepare($sql);
+           $stmp->execute(array(
+            ":list_id" => $list_id
+            ));
+
+           return true;
+
+         } catch(PDOException $e) {
+          echo $e->getMessage();//Remove or change message in production code
+          return false;
+          }
+        }
+
+
+        function get_all_list_polls($list_id){
+          include 'database.php';
+           include_once '../Models/Poll.php';
+           include_once '../Models/User.php';
+           include_once '../Models/PollsList.php';
+
+           $db_connection = 'sqlite:'.$database_name;
+           $list_polls_array = array();
+
+           try {
+            $db = new PDO($db_connection);
+               $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+               
+               // get all polls from polls table
+               $sql ="SELECT * FROM list_polls WHERE list_id = :list_id";
+               $stmp = $db->prepare($sql);
+               $stmp->execute(array(
+                ':list_id' => $list_id
+                ));
+               $polls_list = $stmp->fetchAll();
+               $poll_array = array();
+               for($i = 0; $i < count($polls_list); $i++){
+                  $poll = get_poll_by_id($polls_list[$i]['poll_id']);
+                  array_push($poll_array, $poll);
+               }
+               return $poll_array;
+
+             } catch(PDOException $e) {
+              echo $e->getMessage();//Remove or change message in production code
+              return false;
+            }
+
+        }
+
+
+?>

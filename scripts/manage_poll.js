@@ -85,6 +85,19 @@ function pollStatistics(button){
 	
 }
 
+
+function deleteList(button) {
+	var poll_id = $(button).attr("id");
+	var url = window.location.pathname;
+	var url2 = url.replace('/user.php','/Polls/deletelist.php');
+	$.ajax({
+    	url: url2,
+    	type: 'post',
+    	data: { "callDelete": poll_id},
+    	success: function(response) { alert(response); location.reload(); }
+	});
+}
+
 function deletePoll(button) {
 	var poll_id = $(button).attr("id");
 	var url = window.location.pathname;

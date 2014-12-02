@@ -43,7 +43,9 @@
       <li><a href="user.php">Home</a></li>
       <li><a href="user.php?page=listpolls">List Polls</a></li>
       <li><a href="user.php?page=createpoll">Create Poll</a></li>
+      <li><a href="user.php?page=createlistpoll">Create Polls List</a></li>
       <li><a href="user.php?page=managepoll">Manage Polls</a></li>
+      <li><a href="user.php?page=managelistpoll">Manage Polls List</a></li>
       <div class="position-right">
       <li><a href="Auth/logout.php">Logout</a></li>
       </div>
@@ -64,6 +66,12 @@
     include 'Pages/managepoll.php';
   }else if($_GET['page'] == 'viewpoll'){
     include 'Pages/viewpoll.php';
+  }else if($_GET['page'] == 'createlistpoll'){
+    include 'Pages/createlistpoll.php';
+  }else if($_GET['page'] == 'managelistpoll'){
+    include 'Pages/managelistpoll.php';
+  }else if($_GET['page'] == 'viewlistpoll'){
+    include 'Pages/viewlistpoll.php';
   }
 
 

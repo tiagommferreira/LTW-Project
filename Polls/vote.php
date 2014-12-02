@@ -17,14 +17,14 @@
 
 		if($poll->vote($user->getID(), $option_id) == true){
 			echo '<script>alert("Vote received")</script>';
-			echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../user.php?page=listpolls">';
+			echo '<script>window.location.href = document.referrer;</script>';
 		}else{
 			echo '<script>alert("Vote failed/vote already done")</script>';
-			echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../user.php?page=listpolls">';
+			echo '<script>window.location.href = document.referrer;</script>';
 		}
 	}else{
 		echo '<script>alert("No option selected")</script>';
-		echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../user.php?page=listpolls">';
+		echo '<script>window.location.href = document.referrer;</script>';
 	}
 
 

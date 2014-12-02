@@ -1,12 +1,12 @@
 <?php
 	session_start();
 	/** Register user to database. **/
-    include_once('../Models/User.php');	// include User model
-    
+    include '../Models/User.php';	// include User model
+
     $user = new User;	// create user model with register form values
 
-    $user->setUsername(htmlentities($_POST['register_username']));
-    $user->setEmailhtmlentities(($_POST['register_email']));
+    $user->setUsername(htmlentities($_POST['register_username']));		
+    $user->setEmail(htmlentities($_POST['register_email']));
     $user->setPassword(htmlentities($_POST['register_password']));
 
      // save user if not exists

@@ -24,6 +24,8 @@ body, html {
 
 .nav-bar ul{
   list-style: none;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .nav-bar li{
@@ -34,7 +36,6 @@ body, html {
   color: #069;
   font-weight: bold;
   padding: 1em;
-  border-right: 1px solid #ccc;
 }
 .nav-bar li a:hover {
   color: #c00;

@@ -113,7 +113,6 @@ class User{
 	*/
 	public function auth(){
 		include_once('../database/manage_database.php');
-
 		if($this->exists() == false){
 			echo "User not found.<br>";
 			return false;
