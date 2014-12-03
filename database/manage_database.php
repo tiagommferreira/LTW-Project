@@ -257,7 +257,7 @@ $db = null;
      function save_poll($question, $answers, $image, $isPrivate){
       include 'database.php';
 
-      session_start();
+      //session_start();
 
       $db_connection = 'sqlite:'.$database_name;
 

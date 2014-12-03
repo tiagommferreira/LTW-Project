@@ -1,5 +1,7 @@
-function openVoteModal(button){
+function openEditModal(button){
+	//TODO
 
+	/*
 	// base url pc
 	var BASE_URL = "http://localhost:80/proj";
 	//var BASE_URL = "http://ltw.feup:8888/projetoLTW";
@@ -14,8 +16,6 @@ function openVoteModal(button){
 		$("h3[id='poll_modal_title']").text(data.by_id.question);
 		var answers = data.by_id.answers;
 		$( "#poll_modal_answers" ).empty();	// empty options div
-		$("#preview").attr("src", data.by_id.image);
-		
 		for (i = 0; i < answers.length; i++) { 
 			// get option string
 			$.getJSON(BASE_URL+'/api/polls.php?answer_id='+answers[i], function( data_answer ) {
@@ -23,12 +23,12 @@ function openVoteModal(button){
 			});
 
    		}
-			
 	});
 
 	$('#poll_vote_modal').modal("show");
+	*/
 }
 
 $(document).ready(function() {
-	    $('#polls_list').DataTable();
+	    $('#manage_polls_list').DataTable();
 } );

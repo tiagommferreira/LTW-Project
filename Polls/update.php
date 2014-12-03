@@ -32,7 +32,7 @@
 
 			if(is_dir($location))
 		  	{
-		  		echo ("$file is a directory");
+		  		echo ("file is a directory");
 		  	}else{
 		  		mkdir($location,0777);
 		  	}
@@ -88,11 +88,11 @@
 			}
 
 			if($poll->save() == true){
-				//echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../user.php?page=managepoll">';
+				echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../user.php?page=managepoll">';
 				echo '<script>alert("Poll edited successfully!")</script>';
 			}else{
 				echo '<script>alert("Poll creation failed!")</script>';
-				//echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../user.php?page=managepoll">';
+				echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../user.php?page=managepoll">';
 			}
 
 		}

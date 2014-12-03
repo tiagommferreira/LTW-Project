@@ -27,7 +27,7 @@
 
 		if(is_dir($location))
 	  	{
-	  		echo ("$file is a directory");
+	  		echo ("file is a directory");
 	  	}else{
 	  		mkdir($location,0777);
 	  	}

@@ -37,7 +37,7 @@
     <p align=justify>
       <h2>Hey, welcome to our website!</h2> <br>
      
-      The main purpose of this website is to provid a user based interface for voting on polls created by users.<br><br>
+      The main purpose of this website is to provide a user based interface for voting on polls created by users.<br><br>
       <b>A poll can:</b>
         <ul style="list-style-type: none;">
           <li > 
