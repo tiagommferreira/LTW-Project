@@ -5,6 +5,8 @@ body, html {
   font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #404040;
   background-image: url("arrive_background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   margin: 0em;
   height: 100%;
   width: 100%;

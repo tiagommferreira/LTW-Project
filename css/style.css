@@ -2,6 +2,8 @@ body {
   font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #404040;
   background-image: url("arrive_background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .register-title {
@@ -119,8 +121,8 @@ input {
 #about_us {
   display: none;
   margin: auto;
-  width: 23%;
-  padding: 20px;
+  width: 50%;
+  padding: 4%;
   background: #f4f4f4;
   border-radius: 3px;
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
