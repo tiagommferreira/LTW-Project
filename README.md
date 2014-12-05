@@ -2,8 +2,11 @@ Install project
 ---------------
 
 Create database from .sql file, located at database/database.sql. Steps:
+
 	1. connect to server where website is located.
+
 		example, through terminal:
+		
 			a)   ssh username@gnomo.fe.up.pt
 			b)   login with your password
 	2. go to website base directory
