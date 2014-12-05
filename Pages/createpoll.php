@@ -45,7 +45,7 @@ $user = unserialize($_SESSION['user']);
 		</div>
 		<br>
 		Answers:
-		<div class="possible_answers">
+		<div class="possible_answers" id="poll_edit_answers">
 			<input type="text" name="option_1" class="poll-option" placeholder="Write your answer..." required><br>
 			<input type="text" name="option_2" class="poll-option" placeholder="Write your answer..." required><br>
 		</div>

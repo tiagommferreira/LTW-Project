@@ -31,7 +31,8 @@ body, html {
 }
 
 .nav-bar li{
-  display: inline;padding: 0em;
+  display: inline;
+  padding: 0em;
 }
 .nav-bar li a{
   text-decoration: none;
@@ -269,3 +270,5 @@ body, html {
   border: solid 1px #ccc;
   padding: 1%;
 }
+
+

@@ -47,6 +47,7 @@
     <ul>
       <li><a href="user.php">Home</a></li>
       <li><a href="user.php?page=listpolls">List Polls</a></li>
+
       <li><a href="user.php?page=createpoll">Create Poll</a></li>
       <li><a href="user.php?page=createlistpoll">Create Polls List</a></li>
       <li><a href="user.php?page=managepoll">Manage Polls</a></li>

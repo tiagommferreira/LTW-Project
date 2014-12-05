@@ -74,8 +74,18 @@
   		</div>
   		<div class="modal-footer" >
   			<input type="submit" value="Submit Vote" class="btn btn-success">
-    		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+    		<button type="button" class="btn btn-primary" onclick="closeCurrentTab();" data-dismiss="modal">Close</button>
   		</div>
   		</form>
+
+
+
+<script type="text/javascript">
+	function closeCurrentTab(){
+    	window.close();	
+	}
+
+</script>
+
 
 </div>
