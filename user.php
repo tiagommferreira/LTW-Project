@@ -21,6 +21,11 @@
   <link href="http://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css" rel="stylesheet">
 
 
+
+<script src="scripts/api_location.js"></script>
+
+
+
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
    
   <script src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>

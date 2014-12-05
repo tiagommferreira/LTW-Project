@@ -3,6 +3,10 @@
   <meta charset="utf-8">
   <title>Poll Manager</title>
   <link rel="stylesheet" href="css/style.css">
+  
+<script src="scripts/api_location.js"></script>
+
+
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="scripts/script.js"></script>
 <script src="scripts/register_validation.js"></script>

@@ -1,3 +1,4 @@
+
 function IsEmail(email) {
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   return regex.test(email);
@@ -37,11 +38,6 @@ $(document).keypress(function(e) {
 
 
 $(function(){
-	// base url pc
-	var BASE_URL = "http://localhost:80/proj";
-	//var BASE_URL = "http://ltw.feup:8888/projetoLTW";
-	// base url da feup
-	//var BASE_URL = "http://gnomo.fe.up.pt/~ei12050/projetoLTW"
 
 	$("input[name='register_username']").focusout(function(){
 		$("input[type='submit']").attr('disabled', 'disabled');
