@@ -746,6 +746,12 @@ $db = null;
             ":poll_id" => $poll_id
             ));
 
+           $sql ="DELETE FROM list_polls WHERE poll_id = :poll_id" ; 
+           $stmp = $db->prepare($sql);
+           $stmp->execute(array(
+            ":poll_id" => $poll_id
+            ));
+
            return true;
 
          } catch(PDOException $e) {
